@@ -4,7 +4,7 @@ import {BrowserRouter, Link, Route, Switch} from "react-router-dom";
 
 const Header = () => {
     return (
-        <div className="flex justify-around">
+        <div className="flex justify-around items-center">
             <div>
                 <nav>
                     <ul>
@@ -26,9 +26,8 @@ const Header = () => {
             </div>
 
             <div>
-                <span>Instagram</span>
-                <span>YouTube</span>
-                <span>Viemo</span>
+                <img src="/logo/youtube.svg" alt="youtube" width="50" height="50"/>
+                <img src="/logo/vimeo.svg" alt="vimeo" width="50" height="50"/>
             </div>
         </div>
     );
