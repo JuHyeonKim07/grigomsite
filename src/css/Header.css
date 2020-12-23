@@ -1,4 +1,7 @@
-* {margin: 0; padding: 0;}
+* {
+    margin: 0;
+    padding: 0;
+}
 
 ul {
     overflow: hidden;
@@ -7,9 +10,8 @@ ul {
 
 li {
     height: 25px;
+    text-align: center;
     float: left;
-    margin-right: 0px;
-    border-right: 1px solid #aaa;
     padding: 0 20px;
 }
 
@@ -20,7 +22,7 @@ li:last-child {
 li a {
     text-decoration: none;
     color: #666;
-    font: 25px/1 Helvetica, Verdana, sans-serif;
+    font: 1rem/1 Helvetica, Verdana, sans-serif;
     text-transform: uppercase;
     -webkit-transition: all 0.5s ease;
 }
@@ -28,4 +30,24 @@ li a {
 li.active a {
     font-weight: bold;
     color: #333;
+}
+
+.title-flex {
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title-box1 {
+    flex-grow: 1;
+}
+
+.title-box2 {
+    flex-grow: 1;
+}
+
+.title-box3 {
+    flex-grow: 1;
+    text-align: center;
 }
