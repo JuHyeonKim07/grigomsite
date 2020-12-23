@@ -1,5 +1,16 @@
-.videoLayer {
+.imageBox {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row;
 }
+
+.image {
+    flex-basis: 33.3%;
+    height: 400px;
+    background-color: powderblue;
+    transition: background-color .5s;
+}
+
+.image:hover {
+    background-color: gold;
+}
+

@@ -1,50 +1,48 @@
 import React from "react";
-
+import '../css/Works.css';
 
 const imageList = [
-    {imageName: "a"},
-    {imageName: "b"},
-    {imageName: "c"},
-    {imageName: "d"},
-    {imageName: "e"},
-    {imageName: "f"},
-    {imageName: "g"},
-    {imageName: "h"},
-    {imageName: "i"},
-    {imageName: "j"},
-    {imageName: "k"},
-    {imageName: "l"},
-    {imageName: "m"},
-    {imageName: "n"},
-    {imageName: "o"},
-    {imageName: "p"},
-    {imageName: "q"},
-    {imageName: "r"},
-    {imageName: "s"},
-    {imageName: "t"},
-    {imageName: "u"},
-    {imageName: "w"},
-    {imageName: "x"},
-    {imageName: "y"},
-    {imageName: "z"},
+    {imageSrc: 'a', projectName: '', url: ''},
+    {imageSrc: 'b', projectName: '', url: ''},
+    {imageSrc: 'c', projectName: '', url: ''},
+    {imageSrc: 'd', projectName: '', url: ''},
+    {imageSrc: 'e', projectName: '', url: ''},
+    {imageSrc: 'f', projectName: '', url: ''},
+    {imageSrc: 'g', projectName: '', url: ''},
+    {imageSrc: 'h', projectName: '', url: ''},
+    {imageSrc: 'i', projectName: '', url: ''},
+    {imageSrc: 'j', projectName: '', url: ''},
+    {imageSrc: 'k', projectName: '', url: ''},
+    {imageSrc: 'l', projectName: '', url: ''},
+    {imageSrc: 'm', projectName: '', url: ''},
+    {imageSrc: 'n', projectName: '', url: ''},
+    {imageSrc: 'o', projectName: '', url: ''},
+    {imageSrc: 'p', projectName: '', url: ''},
+    {imageSrc: 'q', projectName: '', url: ''},
+    {imageSrc: 'r', projectName: '', url: ''},
+    {imageSrc: 's', projectName: '', url: ''},
+    {imageSrc: 't', projectName: '', url: ''},
+    {imageSrc: 'u', projectName: '', url: ''},
+    {imageSrc: 'w', projectName: '', url: ''},
+    {imageSrc: 'x', projectName: '', url: ''},
+    {imageSrc: 'y', projectName: '', url: ''},
+    {imageSrc: 'z', projectName: '', url: ''},
 ]
 
 
 function Works() {
     return (
-        <body>
         <section>
-            <div style={{display: 'flex', flexWrap: 'wrap'}}>
+            <div className="imageBox">
                 {imageList.map(value => {
                     return (
-                        <div style={{flexBasis: "33.3%", height: 400}}>
-                            {value['imageName']}
+                        <div className='image'>
+                            {value['imageSrc']}
                         </div>
                     )
                 })}
             </div>
         </section>
-        </body>
     )
 }
 

@@ -5,17 +5,26 @@ import Header from './component/Header'
 import What from './pages/What'
 import Brands from './pages/Brands'
 import Works from './pages/Works'
-
+import Contact from './pages/Contact'
+import Footer from './component/Footer'
 
 function App() {
     return (
         <div>
-            <Header/>
+            <header>
+                <Header/>
+            </header>
+            <body>
             <Switch>
                 <Route exact path="/" component={What}/>
                 <Route path="/Brands" component={Brands}/>
                 <Route path="/Works" component={Works}/>
+                <Route path="/Contact" component={Contact}/>
             </Switch>
+            </body>
+            <footer>
+                <Footer/>
+            </footer>
         </div>
     );
 }
