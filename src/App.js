@@ -11,20 +11,14 @@ import Footer from './component/Footer'
 function App() {
     return (
         <div>
-            <header>
-                <Header/>
-            </header>
-            <body>
+            <Header/>
             <Switch>
                 <Route exact path="/" component={What}/>
                 <Route path="/Brands" component={Brands}/>
                 <Route path="/Works" component={Works}/>
                 <Route path="/Contact" component={Contact}/>
             </Switch>
-            </body>
-            <footer>
-                <Footer/>
-            </footer>
+            <Footer/>
         </div>
     );
 }
