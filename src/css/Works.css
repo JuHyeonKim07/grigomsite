@@ -6,11 +6,10 @@
 .image {
     flex-basis: 33.3%;
     height: 400px;
-    background-color: powderblue;
+    background-color: #24252A;
     transition: background-color .5s;
 }
 
 .image:hover {
-    background-color: gold;
+    background-color: #004225;
 }
-
