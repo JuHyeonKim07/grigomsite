@@ -5,11 +5,21 @@
 
 .image {
     flex-basis: 33.3%;
-    height: 400px;
-    background-color: #24252A;
-    transition: background-color .5s;
 }
 
-.image:hover {
-    background-color: #004225;
+.image > img {
+    width: 100%;
+}
+
+
+@media screen and (max-width: 1500px) {
+    .image {
+        flex-basis: 50%;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .image {
+        flex-basis: 100%;
+    }
 }

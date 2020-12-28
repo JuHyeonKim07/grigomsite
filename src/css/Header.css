@@ -20,14 +20,14 @@ header {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding: 1vh 10%;
+    padding: 2vh 10%;
 }
 
 .logo {
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
     margin-right: auto;
-    font-size: 5vh;
+    font-size: 30px;
 }
 
 .nav_links {
@@ -45,4 +45,12 @@ header {
 
 .nav_links li a:hover {
     color: #0088a9;
+}
+
+@media screen and (max-width: 800px) {
+    .nav_links li {
+        display: flex;
+        justify-content: flex-start;
+        padding: 4px 20px;
+    }
 }
