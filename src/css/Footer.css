@@ -4,7 +4,7 @@ footer {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding: 2vh 10%;
+    padding: 40px 10% ;
 }
 
 .socials, img {
@@ -14,18 +14,11 @@ footer {
 .socials {
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
-    font-size: 2vh;
+    font-size: 10px;
     color: #24252A;
     list-style: none;
 }
 
 .socials li {
     padding: 3px 2vh;
-}
-
-
-@media (max-width: 600px) {
-    .footer > * {
-        flex: 1;
-    }
 }
