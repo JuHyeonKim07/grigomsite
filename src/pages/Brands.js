@@ -24,7 +24,9 @@ const brandList = [
 function Brands() {
     return (
         <div>
-            <div>Client</div>
+            <div className="title">
+                <span>BRANDS</span>
+            </div>
 
             <div className="brand-list-box">
                 {brandList.map((value, index) => (
