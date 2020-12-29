@@ -1,0 +1,13 @@
+
+.details {
+
+}
+
+.details_box {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.details_box > .details_iframe > iframe {
+
+}

@@ -2,7 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    padding: 10%;
+    padding: 0 10%;
 }
 
 .brand-list-logo {
