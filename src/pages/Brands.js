@@ -3,7 +3,7 @@ import '../css/Brand.css';
 
 const brandList = [
     {src: "/logo/koreaculture_logo.png", alt: "culturekorea_logo"},
-    {src: "/logo/danawa_logo.png", alt: "danawa_logo"},
+    {src: "/logo/danawa_logo.jpg", alt: "danawa_logo"},
     {src: "/logo/dyson_logo.png", alt: "dyson_logo"},
     {src: "/logo/hustorm_logo.png", alt: "hustorm_logo"},
     {src: "/logo/ksia_logo.png", alt: "ksia_logo"},
