@@ -8,6 +8,7 @@ function Works() {
     const accessToken = "da231ec06f876ff503b91d8152a722a2"
     const userid = '129526601'
     const [data, setData] = useState([]);
+    // const [dataLength, dataLength] = useState([]);
 
     // useEffect는 비동기적으로 동작
     useEffect(() => {
@@ -26,7 +27,15 @@ function Works() {
         uploaded_List();
     }, []);
 
+
+    useEffect(() => {
+        if(0){
+            localStorage.setItem('videoList', JSON.stringify(data))
+        }
+    }, [data])
+
     return (
+
         <section>
 
             <div className="title">
@@ -39,7 +48,7 @@ function Works() {
                     return (
                         <div className="image" key={index}>
                             <img className="image__img" src={value['pictures']['sizes'][5]['link']} alt="Bricks"/>
-                                <Link to={`/Details/${encodeURIComponent(value['embed']['html'])}`}>
+                            <Link to={`/Details/${encodeURIComponent(value['embed']['html'])}`}>
                                 <div className="image__overlay image__overlay--primary">
                                     <div className="image__title">Grigom Pictures</div>
                                     <p className="image__description">
