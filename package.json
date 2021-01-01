@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.1",
     "bootstrap": "^5.0.0-beta1",
+    "nodemailer": "^6.4.17",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.0",
     "react-bootstrap-carousel": "^4.1.0",
