@@ -1,9 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
 * {
     box-sizing: border-box;
 }
 .Contact {
-    max-width: 420px;
+    width: 475px;
     margin: 0 auto;
+}
+
+.Contact > form > div > label , .Contact > form > div > input, textarea {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 1.1rem;
 }
 
 input[type=text],input[type=email], select, textarea {
@@ -17,7 +25,7 @@ input[type=text],input[type=email], select, textarea {
     resize: vertical;
 }
 input[type=submit] {
-    background-color: #4CAF50;
+    background-color: #004225;
     color: white;
     padding: 12px 20px;
     border: none;
@@ -31,4 +39,10 @@ input[type=submit]:hover {
     border-radius: 5px;
     background-color: #f2f2f2;
     padding: 20px;
+}
+
+@media screen and (max-width: 500px) {
+    .Contact {
+        width: 70%;
+    }
 }

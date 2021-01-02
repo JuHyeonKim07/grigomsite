@@ -1,43 +1,8 @@
 import React, {useEffect, useState, useReducer} from "react";
 import '../css/Contact.css';
-import * as mailPoster from "nodemailer";
-import nodeMailer from "nodemailer";
+import axios from "axios";
+import {Link} from "react-router-dom";
 
-// 메일 보내는 사람 설정
-nodeMailer.createTestAccount({
-    service: 'worksmobile',
-    host: "smtp.worksmobile.com",
-    port: "465",
-    secure: "true",
-    auth: {
-        user: {
-            user: 'director@grigompictures.com',
-            pass: 'rlaehdgur9107!'
-        }
-    }
-})
-
-// 메일 받은 사람 설정
-const mailOpt = (user_data) => {
-    const mailOptions = {
-        from: '보낼사람',
-        to: 'director@grigompictures.com',
-        subject: '메일제목 입력',
-        text: '내용 입력'
-    };
-    return mailOptions;
-}
-
-// 메일 전송
-const sendMail = (mailOption) => {
-    mailPoster.sendMail(mailOption, function (error, info) {
-        if (error) {
-            console.log('에러 ' + error);
-        } else {
-            console.log('전송 완료 ' + info.response);
-        }
-    });
-}
 
 function reducer(state, {name, value}) {
     return {
@@ -48,6 +13,7 @@ function reducer(state, {name, value}) {
 
 function Contact() {
     const initialState = {
+        company: '',
         email: '',
         phone: '',
         number: '',
@@ -61,7 +27,35 @@ function Contact() {
         const {name, value} = event.target
         dispatch({name: name, value})
     }
-    const {email, phone, number, name, message} = state
+
+    function handleFormSubmit(event) {
+        const email_Input = document.getElementById('email')
+        const name_Input = document.getElementById('name')
+        const phone_Input = document.getElementById('phone')
+
+        if (!email_Input.checkValidity()) {
+        } else if (!name_Input.checkValidity()) {
+        } else if (!phone_Input.checkValidity()) {
+        } else {
+            axios({
+                method: 'post',
+                url: `${API_PATH}`,
+                headers: {'content-type': 'application/json'},
+                data: state
+            }).then(res => {
+                if(res.status === 200){
+                    alert('메일을 전송하였습니다. 홈으로 이동합니다.')
+                    document.location.href('/')
+                }else{
+                    alert("메일전송에 실패하였습니다.")
+                }
+            }).catch(error => console.log(error));
+            event.preventDefault()
+        }
+    };
+
+    const {company, number, email, name, phone, message} = state
+    const API_PATH = 'http://grigompictures.com/index.php'
 
     return (
         <div>
@@ -70,9 +64,29 @@ function Contact() {
             </div>
 
             <div className="Contact">
-                <form action="/action_page.php">
+                <form>
                     <div>
-                        <label>Email</label>
+                        <label>회사명</label>
+                        <input
+                            type="text"
+                            id="company"
+                            name="company"
+                            placeholder="Your Name"
+                            value={company}
+                            onChange={onChange}
+                        />
+
+                        <label>회사번호</label>
+                        <input
+                            type="text"
+                            id="number"
+                            name="number"
+                            placeholder="Company Number"
+                            value={number}
+                            onChange={onChange}
+                        />
+
+                        <label>이메일</label>
                         <input
                             type="email"
                             id="email"
@@ -83,40 +97,29 @@ function Contact() {
                             required
                         />
 
-                        <label>Phone</label>
-                        <input
-                            type="text"
-                            id="phone"
-                            name="phone"
-                            placeholder="Your last name.."
-                            value={phone}
-                            onChange={onChange}
-                            required
-                        />
-
-                        <label>Company Number</label>
-                        <input
-                            type="text"
-                            id="number"
-                            name="number"
-                            placeholder="Your last name.."
-                            value={number}
-                            onChange={onChange}
-                            required
-                        />
-
-                        <label>Name</label>
+                        <label>담당자 이름</label>
                         <input
                             type="text"
                             id="name"
                             name="name"
-                            placeholder="Your last name.."
+                            placeholder="Name"
                             value={name}
                             onChange={onChange}
                             required
                         />
 
-                        <label>Message</label>
+                        <label>담당자 전화번호</label>
+                        <input
+                            type="text"
+                            id="phone"
+                            name="phone"
+                            placeholder="Phone"
+                            value={phone}
+                            onChange={onChange}
+                            required
+                        />
+
+                        <label>내용</label>
                         <textarea
                             id="message"
                             name="message"
@@ -125,7 +128,7 @@ function Contact() {
                             onChange={onChange}
                             required
                         />
-                        <input type="submit" value="submit"/>
+                        <input type="submit" onClick={e => handleFormSubmit(e)} value="SUBMIT"/>
                     </div>
                 </form>
             </div>

@@ -7,7 +7,7 @@ function About() {
         <div className="info-div">
 
             <div className="info-image">
-                <img className="shot_range" src="/image/shot_range.jpg" alt="shot_range" width="100%" height="100%"/>
+                <img className="shot_range" src="/image/shot_range.jpg" alt="shot_range" width="100%" />
             </div>
 
             <div className="info-written">
