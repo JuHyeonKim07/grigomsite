@@ -14,7 +14,7 @@
     // phone - 담당자 전화번호
     // message - 메세지
 
-    $to = "rlawngus000407@naver.com";
+    $to = "director@grigompictures.com";
     $subject = "Grigom_Pictures CONTACT MAIL - ".$_POST['company'];
 
     $contents= nl2br(

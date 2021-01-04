@@ -1,10 +1,15 @@
 import React from "react";
 import '../css/Header.css';
 import {BrowserRouter, Link, Route, Switch} from "react-router-dom";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faBars} from "@fortawesome/free-solid-svg-icons";
+import {faTimes} from "@fortawesome/free-solid-svg-icons";
+
 
 const Header = () => {
-    return (
 
+
+    return (
         <header>
             <div className="logo">
                 GRIGOM <br/> PICTURES
@@ -26,6 +31,15 @@ const Header = () => {
                     </li>
                 </ul>
             </nav>
+
+            <div className="m_nav_links">
+                <a href="javascript:void(0)" className="a_open">
+                    <FontAwesomeIcon icon={faBars} className="btn"/>
+                </a>
+                <a href="javascript:void(0)" className="a_cancel">
+                    <FontAwesomeIcon icon={faTimes} className="cancel"/>
+                </a>
+            </div>
         </header>
     );
 };

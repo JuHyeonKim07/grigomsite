@@ -49,7 +49,14 @@ nav_links > li, a, button {
     color: #004225;
 }
 
+.btn, .cancel {
+    display: none;
+}
+
 @media screen and (max-width: 800px) {
+    .logo {
+        font-size: 18px;
+    }
     .nav_links li {
         display: flex;
         justify-content: flex-start;
