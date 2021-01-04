@@ -28,7 +28,7 @@
 }
 
 .info-title > span {
-    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 500;
     font-size: 3.3vh;
 }
@@ -38,7 +38,7 @@
 }
 
 .info-content > div > span {
-    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 300;
     font-size: 2.3vh;
     margin-bottom: 10px;
@@ -50,13 +50,13 @@
     }
     .info-title > span {
         font-weight: 500;
-        font-size: 4vh;
+        font-size: 23px;
     }
     .info-written {
         flex-basis: 100%;
     }
     .info-content > div > span {
-        font-size: 3vh;
+        font-size: 15px;
     }
 
 }

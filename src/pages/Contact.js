@@ -1,8 +1,7 @@
 import React, {useEffect, useState, useReducer} from "react";
 import '../css/Contact.css';
 import axios from "axios";
-import {Link} from "react-router-dom";
-
+import browserHistory from "react-router-dom";
 
 function reducer(state, {name, value}) {
     return {
@@ -45,7 +44,7 @@ function Contact() {
             }).then(res => {
                 if(res.status === 200){
                     alert('메일을 전송하였습니다. 홈으로 이동합니다.')
-                    document.location.href('/')
+                    window.location.pathname = '/'
                 }else{
                     alert("메일전송에 실패하였습니다.")
                 }
