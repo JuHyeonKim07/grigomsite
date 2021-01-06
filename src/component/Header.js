@@ -1,19 +1,15 @@
 import React from "react";
 import '../css/Header.css';
 import {BrowserRouter, Link, Route, Switch} from "react-router-dom";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faBars} from "@fortawesome/free-solid-svg-icons";
-import {faTimes} from "@fortawesome/free-solid-svg-icons";
-
 
 const Header = () => {
-
-
     return (
         <header>
-            <div className="logo">
-                GRIGOM <br/> PICTURES
-            </div>
+            <Link to="/">
+                <div className="logo">
+                    GRIGOM <br/> PICTURES
+                </div>
+            </Link>
 
             <nav>
                 <ul className="nav_links">
