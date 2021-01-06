@@ -8,7 +8,7 @@ import Works from './pages/Works'
 import Contact from './pages/Contact'
 import Details from './pages/Details'
 import Footer from './component/Footer'
-import axios from "axios";
+
 
 function App() {
     return (
