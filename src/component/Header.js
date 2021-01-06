@@ -31,15 +31,6 @@ const Header = () => {
                     </li>
                 </ul>
             </nav>
-
-            <div className="m_nav_links">
-                <a href="javascript:void(0)" className="a_open">
-                    <FontAwesomeIcon icon={faBars} className="btn"/>
-                </a>
-                <a href="javascript:void(0)" className="a_cancel">
-                    <FontAwesomeIcon icon={faTimes} className="cancel"/>
-                </a>
-            </div>
         </header>
     );
 };

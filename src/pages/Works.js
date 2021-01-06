@@ -12,10 +12,8 @@ function Works() {
 
     // useEffect는 비동기적으로 동작
     useEffect(() => {
-        
         // localStorage 에 데이터가 없을 경우
         if (localStorage.getItem("videoList") === null) {
-            console.log('here')
             async function uploaded_List() {
                 await axios.get(`https://api.vimeo.com/users/${userid}/videos`, {
                     headers: {
@@ -27,8 +25,9 @@ function Works() {
                     localStorage.setItem('videoList', JSON.stringify(res.data.data));
                 }).catch(error => console.error(error))
             }
+
             uploaded_List();
-        }else{
+        } else {
             // 데이터가 있으면 그냥 있는 데이터 사용
             setVideoList(JSON.parse(localStorage.getItem('videoList')))
         }
