@@ -2,6 +2,7 @@ import React, {useEffect, useState, useReducer} from "react";
 import '../css/Contact.css';
 import axios from "axios";
 import browserHistory from "react-router-dom";
+import {Button} from "@material-ui/core";
 
 function reducer(state, {name, value}) {
     return {
@@ -28,6 +29,8 @@ function Contact() {
     }
 
     function handleFormSubmit(event) {
+        console.log('Click')
+
         const email_Input = document.getElementById('email')
         const name_Input = document.getElementById('name')
         const phone_Input = document.getElementById('phone')
@@ -127,7 +130,7 @@ function Contact() {
                             onChange={onChange}
                             required
                         />
-                        <input type="submit" onClick={e => handleFormSubmit(e)} value="SUBMIT"/>
+                        <Button variant="contained" color="default" onClick={e => handleFormSubmit(e)} >SUBMIT</Button>
                     </div>
                 </form>
             </div>

@@ -47,7 +47,7 @@ function About() {
                     </div>
 
                     <div>
-                        <img src="/logo/grigom_black.svg" alt="grigom_black" width="50%"/>
+                        <img src="/logo/grigom_black.svg" alt="grigom_black" width="200px"/>
                     </div>
                 </div>
             </div>
