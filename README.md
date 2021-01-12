@@ -1,18 +1,10 @@
 # GrigomSite
 
-그리곰 포토폴리오 사이트
+그리곰 포토폴리오 사이트 입니다.
 
-#Vimeo API
-   useEffect(() => {
-        async function get() {
-            await axios.get("https://api.vimeo.com/users/129526601/videos", {
-                headers: {
-                    Authorization: `bearer ${accessToken}`
-                }
-            }).then(res => {
-                setData(res.data)
-                console.log(data)
-            }).catch(error => console.error(error))
-        }
-        get();
-    }, []); //input에 값이 변경이 되었을때 effect를 실행한다
+React JS, Axios, React Router, Material - UI 사용
+PHP 와 아파치 웹서버를 이용하여 메일 전송 기능을 구현하였습니다.
+
+Viemo api 를 이용해 Works 페이지 생성.
+React Router 를 이용하여 동영상 iframe을 get 방식으로 받아 사용하였음.
+
