@@ -1,6 +1,7 @@
 import React from "react";
 import '../css/Header.css';
 import {BrowserRouter, Link, Route, Switch} from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Header = () => {
     return (

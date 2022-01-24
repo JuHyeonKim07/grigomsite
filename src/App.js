@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from "react";
-import {BrowserRouter, Route, Switch} from "react-router-dom";
+import React, {Component} from "react";
+import { Route, Switch} from "react-router-dom";
 
 import Header from './component/Header'
 import About from './pages/About'
@@ -10,20 +10,32 @@ import Details from './pages/Details'
 import Footer from './component/Footer'
 
 
-function App() {
-    return (
-        <div>
-            <Header/>
-            <Route exact path="/" component={About}/>
-            <Switch>
-                <Route path="/Brands" component={Brands}/>
-                <Route path="/Works" component={Works}/>
-                <Route path="/Contact" component={Contact}/>
-                <Route path="/Details/:data" component={Details}/>
-            </Switch>
+class App extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            
+        }
+    }
+
+    componentWillUnmount = () => {
+        localStorage.clear();
+    }
+
+    render(){
+        return(
+            <div>
+                <Header/>
+                <Route exact path="/" component={About}/>
+                <Switch>
+                    <Route path="/Brands" component={Brands}/>
+                    <Route path="/Works" component={Works}/>
+                    <Route path="/Contact" component={Contact}/>
+                    <Route path="/Details/:data" component={Details}/>
+                </Switch>
             <Footer/>
         </div>
-    );
+        )
+    }
 }
-
 export default App;
