@@ -1,22 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 
-footer {
-    display: flex;
+.footer {
+    height         : 100px;
+    position       : relative;
+    transform      : translateY(-100%);
+    display        : flex;
     justify-content: flex-end;
-    align-items: center;
-    padding: 40px 10% ;
+    align-items    : center;
 }
 
-.socials, img {
+.socials,
+img {
     margin: auto;
 }
 
 .socials {
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
-    font-size: 10px;
-    color: #24252A;
-    list-style: none;
+    font-size  : 10px;
+    color      : #24252A;
+    list-style : none;
 }
 
 .socials li {

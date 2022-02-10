@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import '../css/Brand.css';
 
 const brandList = [
@@ -20,23 +20,33 @@ const brandList = [
     {src: "/logo/seagate_logo.png", alt: "seagate_logo"},
 ]
 
+class Brands extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
 
-function Brands() {
-    return (
-        <div>
-            <div className="title">
-                <span>BRANDS</span>
-            </div>
+        }
+    }
 
-            <div className="brand-list-box">
-                {brandList.map((value, index) => (
-                    <div key={index} className="brand-list-logo">
-                        <img src={value['src']} alt={value['alt']} width="100%"/>
-                    </div>
-                ))}
+    render(){
+        console.log(this.props);
+        return (
+            <div>
+                <div className="title">
+                    <span>BRANDS</span>
+                </div>
+    
+                <div className="brand-list-box">
+                    {brandList.map((value, index) => (
+                        <div key={index} className="brand-list-logo">
+                            <img src={value['src']} alt={value['alt']} width="100%"/>
+                        </div>
+                    ))}
+                </div>
             </div>
-        </div>
-    );
+        );
+    }
+
 }
 
 export default Brands
