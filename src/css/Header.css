@@ -1,71 +1,113 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+    box-sizing        : border-box;
+    margin            : 0;
+    padding           : 0;
     /*background-color: #24252A;*/
 
 }
 
-header {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 2vh 10%;
+.header-div {
+    display        : flex;
+    align-items    : center;
+    justify-content: space-between;
+    padding        : 20px 30px 10px 30px;
+
 }
 
-header > a {
-    margin-right: auto;
+.link-div {
+    z-index: 2;
 }
 
 .logo {
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
-
-    font-size: 30px;
+    font-size  : 1.5rem;
 }
 
-
-.nav_links > li, a, button {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
-    font-size: 18px;
-    color: #24252A;
+a,
+button {
+    font-family    : 'Montserrat', sans-serif;
+    color          : #24252A;
     text-decoration: none;
 }
 
-
-.nav_links {
-    list-style: none;
+.menu-div {
+    margin: -20px 20px 0px 0px;
 }
 
-.nav_links li {
-    display: inline-block;
-    padding: 0px 20px;
+#menu-toggle {
+    opacity: 0;
 }
 
+#menu-toggle:checked+.menu-btn>span {
+    transform: rotate(45deg);
+}
 
+#menu-toggle:checked+.menu-btn>span::before {
+    top      : 0;
+    transform: rotate(0deg);
+}
 
-@media screen and (max-width: 800px) {
-    header {
-        display: block;
-        text-align: center;
-        padding: 0;
+#menu-toggle:checked+.menu-btn>span::after {
+    top      : 0;
+    transform: rotate(90deg);
+}
+
+#menu-toggle:checked~.menu-box {
+    left: 0 !important;
+}
+
+.menu-box {
+    display        : flex;
+    list-style     : none;
+    justify-content: space-around;
+    width          : 500px;
+}
+
+@media (max-width: 1250px) {
+
+    .menu-btn>span,
+    .menu-btn>span::before,
+    .menu-btn>span::after {
+        display            : block;
+        position           : absolute;
+        height             : 4px;
+        width              : 30px;
+        background-color   : black;
+        transition-duration: .25s;
+        z-index            : 2;
     }
 
-    .logo {
-        padding-top: 15px;
-        font-size: 28px;
+    .menu-btn>span::before {
+        content: '';
+        top    : -8px;
     }
 
-    .nav_links li {
-        display: inline-block;
-        padding: 30px 10px;
+    .menu-btn>span::after {
+        content: '';
+        top    : 8px;
     }
 
-    .nav_links > li, a, button {
-        font-size: 12px;
+    .menu-box {
+        z-index: 1;
+        display            : flex;
+        flex-direction     : column;
+        align-items        : center;
+        justify-content    : center;
+        position           : fixed;
+        top                : 0;
+        left               : -100%;
+        width              : 100%;
+        height             : 100%;
+        background-color   : #dde5e9;
+        transition-duration: .25s;
     }
 
+    .menu-box>li {
+        font-size: 1.5rem;
+        font-weight: 400;
+        padding: 0px 0px 30px 0px
+    }
 }

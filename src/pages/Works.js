@@ -1,40 +1,49 @@
-import React, {useEffect, useState, useCallback} from "react";
+import React, { Component } from "react";
 import '../css/Works.css';
 import axios from "axios";
 import {Link} from "react-router-dom";
-import Details from "./Details";
 
-function Works() {
-    const accessToken = "da231ec06f876ff503b91d8152a722a2"
-    const userid = '129526601'
-    const [data, setData] = useState([]);
-    const [videoList, setVideoList] = useState([]);
 
-    // useEffect는 비동기적으로 동작
-    useEffect(() => {
-        // localStorage 에 데이터가 없을 경우
+
+const accessToken = "da231ec06f876ff503b91d8152a722a2"
+const userid = '129526601'
+class Works extends Component{
+    constructor(props){
+        super(props)
+        this.state ={
+            videoList : []
+        }
+    }
+
+    componentDidMount(){
         if (localStorage.getItem("videoList") === null) {
-            async function uploaded_List() {
-                await axios.get(`https://api.vimeo.com/users/${userid}/videos`, {
-                    headers: {
-                        Authorization: `bearer ${accessToken}`
-                    }
-                }).then(res => {
-                    setData(res.data.data)
-                    setVideoList(res.data.data)
-                    localStorage.setItem('videoList', JSON.stringify(res.data.data));
-                }).catch(error => console.error(error))
-            }
-
-            uploaded_List();
+            this.uploaded_List();
         } else {
             // 데이터가 있으면 그냥 있는 데이터 사용
-            setVideoList(JSON.parse(localStorage.getItem('videoList')))
+            this.setState({
+                videoList : JSON.parse(localStorage.getItem('videoList'))
+            })
         }
-    }, []);
+    }
 
-    return (
-        <section>
+    uploaded_List = async () => {
+        await axios.get(`https://api.vimeo.com/users/${userid}/videos`, {
+            headers: {
+                Authorization: `bearer ${accessToken}`
+            }
+        }).then(res => {
+            this.setState({
+                videoList : res.data.data
+            })
+            localStorage.setItem('videoList', JSON.stringify(res.data.data));
+        }).catch(error => console.error(error))
+    }
+
+    render(){
+        console.log(this.props);
+        const { videoList } = this.state
+        return(
+            <section>
 
             <div className="title">
                 <span>WORKS</span>
@@ -59,7 +68,8 @@ function Works() {
                 })}
             </div>
         </section>
-    )
+        )
+    }
 }
 
 export default Works

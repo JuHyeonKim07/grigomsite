@@ -1,5 +1,7 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import { Route, Switch} from "react-router-dom";
+import './App.css';
+
 
 import Header from './component/Header'
 import About from './pages/About'
@@ -11,30 +13,33 @@ import Footer from './component/Footer'
 
 
 class App extends Component {
-    constructor(props){
+    constructor(props) {
         super(props)
         this.state = {
-            
+
         }
     }
 
-    componentWillUnmount = () => {
-        localStorage.clear();
-    }
+    render() {
 
-    render(){
-        return(
-            <div>
-                <Header/>
-                <Route exact path="/" component={About}/>
-                <Switch>
-                    <Route path="/Brands" component={Brands}/>
-                    <Route path="/Works" component={Works}/>
-                    <Route path="/Contact" component={Contact}/>
-                    <Route path="/Details/:data" component={Details}/>
-                </Switch>
-            <Footer/>
-        </div>
+        return (
+            <>
+                <div id='wrapper'>
+                    <header>
+                        <Header />
+                    </header>
+                    <body>
+                        <Route exact path="/" component={About} />
+                        <Switch>
+                            <Route path="/Brands" component={Brands} />
+                            <Route path="/Works" component={Works} />
+                            <Route path="/Contact" component={Contact} />
+                            <Route path="/Details/:data" component={Details} />
+                        </Switch>
+                    </body>
+                </div>
+                <Footer />
+            </>
         )
     }
 }
