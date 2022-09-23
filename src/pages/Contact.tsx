@@ -1,40 +1,53 @@
-import React, { useEffect, useState, useReducer } from "react";
-import '../css/Contact.css';
-import axios from "axios";
-import browserHistory from "react-router-dom";
 import { Button } from "@material-ui/core";
+import axios from "axios";
+import React, { useState } from "react";
+import '../css/Contact.css';
 
-function reducer(state, { name, value }) {
-    return {
-        ...state,
-        [name]: value,
-    }
+interface inputTypes {
+    company: string;
+    number: string;
+    email: string;
+    name: string;
+    phone: string;
 }
 
+
 function Contact() {
-    const initialState = {
+    const [textarea, setTextarea] = useState({
+        message: ''
+    });
+    const [inputs, setInputs] = useState({
         company: '',
-        email: '',
-        phone: '',
         number: '',
+        email: '',
         name: '',
-        message: '',
-    }
+        phone: '',
+    })
 
-    // onChange
-    const [state, dispatch] = useReducer(reducer, initialState);
-    const onChange = (event) => {
-        const { name, value } = event.target
-        dispatch({ name: name, value })
-    }
+    const { company, number, email, name, phone } = inputs
+    const { message } = textarea
 
-    function handleFormSubmit(event) {
-        const email_Input = document.getElementById('email').value
-        const name_Input = document.getElementById('name').value
-        const phone_Input = document.getElementById('phone').value
 
-        console.log(email_Input, name_Input, phone_Input)
+    const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { value, name } = e.target; // 우선 e.target 에서 name 과 value 를 추출
+        setInputs({
+            ...inputs, // 기존의 input 객체를 복사한 뒤
+            [name]: value // name 키를 가진 값을 value 로 설정
+        });
+    };
 
+    const onChangeTextarea = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        const { value, name } = e.target; // 우선 e.target 에서 name 과 value 를 추출
+        setTextarea({
+            ...textarea,
+            [name]: value // name 키를 가진 값을 value 로 설정
+        });
+    };
+
+    function handleFormSubmit(event: React.FormEvent) {
+        const email_Input = (document.getElementById('email') as HTMLInputElement).value
+        const name_Input = (document.getElementById('name') as HTMLInputElement).value
+        const phone_Input = (document.getElementById('phone') as HTMLInputElement).value
 
         if (email_Input.length === 0) {
             alert('이메일을 입력해주세요.')
@@ -47,7 +60,7 @@ function Contact() {
                 method: 'post',
                 url: `${API_PATH}`,
                 headers: { 'content-type': 'application/json' },
-                data: state
+                data: inputs
             }).then(res => {
                 if (res.status === 200) {
                     alert('메일을 전송하였습니다. 홈으로 이동합니다.')
@@ -60,7 +73,6 @@ function Contact() {
         }
     };
 
-    const { company, number, email, name, phone, message } = state
     const API_PATH = 'http://grigompictures.com/index.php'
 
     return (
@@ -79,7 +91,7 @@ function Contact() {
                             name="company"
                             placeholder="Your Name"
                             value={company}
-                            onChange={onChange}
+                            onChange={onChangeInput}
                         />
 
                         <label>회사번호</label>
@@ -89,7 +101,7 @@ function Contact() {
                             name="number"
                             placeholder="Company Number"
                             value={number}
-                            onChange={onChange}
+                            onChange={onChangeInput}
                         />
 
                         <label>이메일</label>
@@ -99,7 +111,7 @@ function Contact() {
                             name="email"
                             placeholder="Your email"
                             value={email}
-                            onChange={onChange}
+                            onChange={onChangeInput}
                             required
                         />
 
@@ -110,7 +122,7 @@ function Contact() {
                             name="name"
                             placeholder="Name"
                             value={name}
-                            onChange={onChange}
+                            onChange={onChangeInput}
                             required
                         />
 
@@ -121,7 +133,7 @@ function Contact() {
                             name="phone"
                             placeholder="Phone"
                             value={phone}
-                            onChange={onChange}
+                            onChange={onChangeInput}
                             required
                         />
 
@@ -131,10 +143,10 @@ function Contact() {
                             name="message"
                             placeholder="Write something.."
                             value={message}
-                            onChange={onChange}
+                            onChange={onChangeTextarea}
                             required
                         />
-                        <Button variant="contained" color="default" onClick={e => handleFormSubmit(e)} >SUBMIT</Button>
+                        <Button variant="contained" color="default" onClick={handleFormSubmit} >SUBMIT</Button>
                     </div>
                 </form>
             </div>
