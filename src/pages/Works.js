@@ -40,7 +40,7 @@ class Works extends Component{
     }
 
     render(){
-        console.log(this.props);
+        // console.log(this.props);
         const { videoList } = this.state
         return(
             <section>

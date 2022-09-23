@@ -1,10 +1,10 @@
-import React, {useEffect, useState, useReducer} from "react";
+import React, { useEffect, useState, useReducer } from "react";
 import '../css/Contact.css';
 import axios from "axios";
 import browserHistory from "react-router-dom";
-import {Button} from "@material-ui/core";
+import { Button } from "@material-ui/core";
 
-function reducer(state, {name, value}) {
+function reducer(state, { name, value }) {
     return {
         ...state,
         [name]: value,
@@ -24,31 +24,35 @@ function Contact() {
     // onChange
     const [state, dispatch] = useReducer(reducer, initialState);
     const onChange = (event) => {
-        const {name, value} = event.target
-        dispatch({name: name, value})
+        const { name, value } = event.target
+        dispatch({ name: name, value })
     }
 
     function handleFormSubmit(event) {
-        console.log('Click')
+        const email_Input = document.getElementById('email').value
+        const name_Input = document.getElementById('name').value
+        const phone_Input = document.getElementById('phone').value
 
-        const email_Input = document.getElementById('email')
-        const name_Input = document.getElementById('name')
-        const phone_Input = document.getElementById('phone')
+        console.log(email_Input, name_Input, phone_Input)
 
-        if (!email_Input.checkValidity()) {
-        } else if (!name_Input.checkValidity()) {
-        } else if (!phone_Input.checkValidity()) {
+
+        if (email_Input.length === 0) {
+            alert('이메일을 입력해주세요.')
+        } else if (name_Input.length === 0) {
+            alert('담당자 이름을 입력해주세요.')
+        } else if (phone_Input.length === 0) {
+            alert('담당자 전화번호를 입력해주세요.')
         } else {
             axios({
                 method: 'post',
                 url: `${API_PATH}`,
-                headers: {'content-type': 'application/json'},
+                headers: { 'content-type': 'application/json' },
                 data: state
             }).then(res => {
-                if(res.status === 200){
+                if (res.status === 200) {
                     alert('메일을 전송하였습니다. 홈으로 이동합니다.')
                     window.location.pathname = '/'
-                }else{
+                } else {
                     alert("메일전송에 실패하였습니다.")
                 }
             }).catch(error => console.log(error));
@@ -56,7 +60,7 @@ function Contact() {
         }
     };
 
-    const {company, number, email, name, phone, message} = state
+    const { company, number, email, name, phone, message } = state
     const API_PATH = 'http://grigompictures.com/index.php'
 
     return (
