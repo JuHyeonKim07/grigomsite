@@ -2,11 +2,10 @@ import React, { Component } from "react";
 import '../css/Works.css';
 import axios from "axios";
 import {Link} from "react-router-dom";
+import {vimeoAcsses} from '../apis/vimeoAcsses'
 
 
 
-const accessToken = "da231ec06f876ff503b91d8152a722a2"
-const userid = '129526601'
 class Works extends Component{
     constructor(props){
         super(props)
@@ -27,9 +26,9 @@ class Works extends Component{
     }
 
     uploaded_List = async () => {
-        await axios.get(`https://api.vimeo.com/users/${userid}/videos`, {
+        await axios.get(`https://api.vimeo.com/users/${vimeoAcsses.userid}/videos`, {
             headers: {
-                Authorization: `bearer ${accessToken}`
+                Authorization: `bearer ${vimeoAcsses.accessToken}`
             }
         }).then(res => {
             this.setState({
@@ -40,7 +39,6 @@ class Works extends Component{
     }
 
     render(){
-        // console.log(this.props);
         const { videoList } = this.state
         return(
             <section>
