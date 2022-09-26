@@ -4,6 +4,6 @@ interface vimeoAcsses_interface {
 }
 
 export const vimeoAcsses: vimeoAcsses_interface = {
-    userid: 'da231ec06f876ff503b91d8152a722a2',
-    accessToken: '129526601'
+    userid: '129526601',
+    accessToken: 'da231ec06f876ff503b91d8152a722a2'
 }
