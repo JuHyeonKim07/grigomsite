@@ -3,7 +3,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import '../css/Contact.css';
 
-interface inputTypes {
+type inputTypes = {
     company: string;
     number: string;
     email: string;
@@ -11,12 +11,16 @@ interface inputTypes {
     phone: string;
 }
 
+type textAreaType = {
+    message: string
+}
+
 
 function Contact() {
-    const [textarea, setTextarea] = useState({
+    const [textarea, setTextarea] = useState<textAreaType>({
         message: ''
     });
-    const [inputs, setInputs] = useState({
+    const [inputs, setInputs] = useState<inputTypes>({
         company: '',
         number: '',
         email: '',
@@ -29,7 +33,7 @@ function Contact() {
 
 
     const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { value, name } = e.target; // 우선 e.target 에서 name 과 value 를 추출
+        const { value, name } = e.target;
         setInputs({
             ...inputs, // 기존의 input 객체를 복사한 뒤
             [name]: value // name 키를 가진 값을 value 로 설정
@@ -37,14 +41,15 @@ function Contact() {
     };
 
     const onChangeTextarea = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-        const { value, name } = e.target; // 우선 e.target 에서 name 과 value 를 추출
+        const { value, name } = e.target
         setTextarea({
             ...textarea,
-            [name]: value // name 키를 가진 값을 value 로 설정
+            [name]: value
         });
     };
 
     function handleFormSubmit(event: React.FormEvent) {
+        // 언제나 HTMLInputElement 가 반환된다는 것을 알려줌. (타입 단언)
         const email_Input = (document.getElementById('email') as HTMLInputElement).value
         const name_Input = (document.getElementById('name') as HTMLInputElement).value
         const phone_Input = (document.getElementById('phone') as HTMLInputElement).value
@@ -146,7 +151,7 @@ function Contact() {
                             onChange={onChangeTextarea}
                             required
                         />
-                        <Button variant="contained" color="default" onClick={handleFormSubmit} >SUBMIT</Button>
+                        <Button variant="contained" color="default" onClick={handleFormSubmit} >전송</Button>
                     </div>
                 </form>
             </div>
