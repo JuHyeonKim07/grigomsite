@@ -15,23 +15,26 @@ import Footer from './component/Footer'
 function App() {
     return (
         <>
-            <div id='wrapper'>
+            <div className="wrapper">
                 <header>
                     <Header />
                 </header>
-                <section>
-                    <Route exact path="/" component={About} />
-                    <Switch>
-                        <Route path="/Brands" component={Brands} />
-                        <Route path="/Works" component={Works} />
-                        <Route path="/Contact" component={Contact} />
-                        <Route path="/Details/:data" component={Details} />
-                    </Switch>
-                </section>
+                <main>
+                    <section>
+                        <Route exact path="/" component={About} />
+                        <Switch>
+                            <Route path="/Brands" component={Brands} />
+                            <Route path="/Works" component={Works} />
+                            <Route path="/Contact" component={Contact} />
+                            <Route path="/Details/:data" component={Details} />
+                        </Switch>
+                    </section>
+                </main>
+                <footer>
+                    <Footer />
+                </footer>
             </div>
-            <footer>
-                <Footer />
-            </footer>
+
         </>
     )
 }

@@ -78,7 +78,7 @@ function Contact() {
         }
     };
 
-    const API_PATH = 'http://grigompictures.com/index.php'
+    const API_PATH: string = 'http://grigompictures.com/index.php'
 
     return (
         <div>

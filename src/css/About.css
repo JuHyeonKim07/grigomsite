@@ -2,14 +2,14 @@
 
 * {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+    margin    : 0;
+    padding   : 0;
 }
 
 .info-div {
-    display: flex;
+    display        : flex;
     justify-content: center;
-    align-items: center;
+    align-items    : center;
 }
 
 /*이미지영역*/
@@ -21,7 +21,6 @@
 /*텍스트 영역*/
 .info-written {
     flex-basis: 45%;
-    padding: 6%;
     text-align: center;
 }
 
@@ -29,20 +28,20 @@
     padding-bottom: 50px;
 }
 
-.info-title > span {
+.info-title>span {
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
-    font-size: 3.3vh;
+    font-size  : 3.3vh;
 }
 
-.info-content > div {
+.info-content>div {
     padding: 4px;
 }
 
-.info-content > div > span {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 300;
-    font-size: 2.3vh;
+.info-content>div>span {
+    font-family  : 'Montserrat', sans-serif;
+    font-weight  : 300;
+    font-size    : 2.3vh;
     margin-bottom: 10px;
 }
 
@@ -50,14 +49,17 @@
     .info-image {
         display: none;
     }
-    .info-title > span {
+
+    .info-title>span {
         font-weight: 500;
-        font-size: 23px;
+        font-size  : 23px;
     }
+
     .info-written {
         flex-basis: 100%;
     }
-    .info-content > div > span {
+
+    .info-content>div>span {
         font-size: 15px;
     }
 

@@ -1,29 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 
 * {
-    box-sizing        : border-box;
-    margin            : 0;
-    padding           : 0;
-    /*background-color: #24252A;*/
-
-}
-
-.header-div {
-    display        : flex;
-    align-items    : center;
-    justify-content: space-between;
-    padding        : 20px 30px 10px 30px;
-
-}
-
-.link-div {
-    z-index: 2;
-}
-
-.logo {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
-    font-size  : 1.5rem;
+    box-sizing: border-box;
+    margin    : 0;
+    padding   : 0;
 }
 
 a,
@@ -33,12 +13,46 @@ button {
     text-decoration: none;
 }
 
-.menu-div {
-    margin: -20px 20px 0px 0px;
+.header-container {
+    display        : flex;
+    align-items    : center;
+    justify-content: space-between;
+    padding        : 10px 40px 0px;
+    height         : 120px;
 }
+
+.title-div {
+    z-index    : 2;
+    font-weight: 500;
+    font-size  : 35px;
+    width      : 30%;
+}
+
+.menu-div {
+    width    : 40%;
+    font-size: 20px;
+}
+
+.menu-box {
+    display        : flex;
+    list-style     : none;
+    justify-content: space-around;
+}
+
+.service-div {
+    width          : 30%;
+    display        : flex;
+    justify-content: space-around;
+    font-size      : 20px;
+}
+
+
+
+/*  */
 
 #menu-toggle {
     opacity: 0;
+    display: none;
 }
 
 #menu-toggle:checked+.menu-btn>span {
@@ -59,14 +73,26 @@ button {
     left: 0 !important;
 }
 
-.menu-box {
-    display        : flex;
-    list-style     : none;
-    justify-content: space-around;
-    width          : 500px;
-}
-
 @media (max-width: 1250px) {
+
+    .title-div {
+        width: 50%;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .menu-div {
+        width          : 50%;
+        display        : flex;
+        justify-content: end;
+        padding-right  : 40px;
+    }
+
+    .service-div {
+        display: none;
+    }
 
     .menu-btn>span,
     .menu-btn>span::before,
@@ -91,7 +117,7 @@ button {
     }
 
     .menu-box {
-        z-index: 1;
+        z-index            : 1;
         display            : flex;
         flex-direction     : column;
         align-items        : center;
@@ -106,8 +132,8 @@ button {
     }
 
     .menu-box>li {
-        font-size: 1.5rem;
+        font-size  : 1.5rem;
         font-weight: 400;
-        padding: 0px 0px 30px 0px
+        padding    : 0px 0px 30px 0px
     }
 }
