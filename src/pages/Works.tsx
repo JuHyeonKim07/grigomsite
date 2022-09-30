@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { vimeoAcsses } from '../apis/vimeoAcsses';
 import '../css/Works.css';
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 interface videoList_Interface {
@@ -21,7 +21,7 @@ interface videoList_Interface {
     type: string
     uri: string
     embed: {
-        html : string  
+        html: string
     }
 }
 
@@ -40,7 +40,7 @@ function Works() {
     }, [])
 
 
-    const uploaded_List = async() => {
+    const uploaded_List = async () => {
         await axios.get(`https://api.vimeo.com/users/${vimeoAcsses.userid}/videos`, {
             headers: {
                 Authorization: `bearer ${vimeoAcsses.accessToken}`
@@ -54,8 +54,10 @@ function Works() {
     return (
         <section>
 
-            <div className="title">
-                <span>WORKS</span>
+            <div className="title-container">
+                <div className="title">
+                    <span>WORKS</span>
+                </div>
             </div>
 
             <div className="imageBox">

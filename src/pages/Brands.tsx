@@ -23,8 +23,10 @@ const brandList = [
 const Brands = () => {
     return (
         <div>
-            <div className="title">
-                <span>BRANDS</span>
+            <div className="title-container">
+                <div className="title">
+                    <span>BRANDS</span>
+                </div>
             </div>
 
             <div className="brand-list-box">

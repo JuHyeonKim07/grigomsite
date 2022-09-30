@@ -9,8 +9,10 @@ function Details({ match }: any) {
     }, []);
     return (
         <div className="details">
-            <div className="title">
-                <span>Details</span>
+            <div className="title-container">
+                <div className="title">
+                    <span>DETAILS</span>
+                </div>
             </div>
 
             <div className="details_box">

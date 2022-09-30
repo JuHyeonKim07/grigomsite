@@ -4,3 +4,29 @@
     flex-direction : column;
     justify-content: space-between;
 }
+
+
+.title-container {
+    width          : 100%;
+    display        : flex;
+    justify-content: center;
+    padding        : 70px 0px;
+}
+
+.title {
+    font-size    : 15vw;
+    font-family  : 'Montserrat', sans-serif;
+    font-weight  : 600;
+    color        : #24252A;
+    text-align   : center;
+    padding      : 10px 0px;
+    /* background: red; */
+}
+
+
+.title-div {
+    z-index    : 2;
+    font-weight: 500;
+    font-size  : 30px;
+    width      : 30%;
+}
