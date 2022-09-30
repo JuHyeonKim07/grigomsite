@@ -17,15 +17,8 @@ button {
     display        : flex;
     align-items    : center;
     justify-content: space-between;
-    padding        : 10px 40px 0px;
-    height         : 120px;
-}
-
-.title-div {
-    z-index    : 2;
-    font-weight: 500;
-    font-size  : 35px;
-    width      : 30%;
+    padding        : 0px 40px 0px;
+    height         : 130px;
 }
 
 .menu-div {

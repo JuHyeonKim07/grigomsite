@@ -82,8 +82,10 @@ function Contact() {
 
     return (
         <div>
-            <div className="title">
-                <span>CONTACT</span>
+            <div className="title-container">
+                <div className="title">
+                    <span>CONTACT</span>
+                </div>
             </div>
 
             <div className="Contact">
