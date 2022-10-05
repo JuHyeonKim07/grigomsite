@@ -1,8 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { vimeoAcsses } from '../apis/vimeoAcsses';
+import { vimeoAcsses, youTubeAcsses } from '../apis/Acsses';
 import '../css/Works.css';
 import { Link } from "react-router-dom";
+import { CategoryTabs } from '../component/CategoryTabs'
+
 
 
 interface videoList_Interface {
@@ -30,7 +32,7 @@ function Works() {
 
     useEffect(() => {
         if (localStorage.getItem("videoList") === null) {
-            uploaded_List();
+            getVimeoList();
         } else {
             // 데이터가 있으면 그냥 있는 데이터 사용
             setVideoList(
@@ -39,8 +41,7 @@ function Works() {
         }
     }, [])
 
-
-    const uploaded_List = async () => {
+    const getVimeoList = async () => {
         await axios.get(`https://api.vimeo.com/users/${vimeoAcsses.userid}/videos`, {
             headers: {
                 Authorization: `bearer ${vimeoAcsses.accessToken}`
@@ -51,14 +52,21 @@ function Works() {
         }).catch(error => console.error(error))
     }
 
-    return (
-        <section>
+    const getYoutubeList = async () => {
+        await axios.get(`https://www.googleapis.com/youtube/v3/playlistItems?key=${youTubeAcsses.apiKey}&playlistId=${youTubeAcsses.playlistId}&part=snippet&maxResults=30`, {
+        }).then(res => {
+        })
+    }
 
+    return (
+        <>
             <div className="title-container">
                 <div className="title">
                     <span>WORKS</span>
                 </div>
             </div>
+
+            <CategoryTabs />
 
             <div className="imageBox">
                 {videoList.map((value, index) => {
@@ -77,7 +85,7 @@ function Works() {
                     )
                 })}
             </div>
-        </section>
+        </>
     )
 }
 
