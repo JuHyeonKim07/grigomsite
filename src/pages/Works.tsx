@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import { CategoryTabs } from '../component/CategoryTabs'
 
 
-
 interface videoList_Interface {
     name: string
     pictures: {
@@ -28,6 +27,9 @@ interface videoList_Interface {
 }
 
 function Works() {
+    // const vimeoList = useSelector((state) => state.vimeoList.value)
+
+
     const [videoList, setVideoList] = useState<videoList_Interface[]>([])
 
     useEffect(() => {
@@ -55,6 +57,7 @@ function Works() {
     const getYoutubeList = async () => {
         await axios.get(`https://www.googleapis.com/youtube/v3/playlistItems?key=${youTubeAcsses.apiKey}&playlistId=${youTubeAcsses.playlistId}&part=snippet&maxResults=30`, {
         }).then(res => {
+
         })
     }
 
@@ -84,6 +87,10 @@ function Works() {
                         </div>
                     )
                 })}
+            </div>
+
+            <div>
+
             </div>
         </>
     )
