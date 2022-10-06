@@ -1,13 +1,14 @@
+// app/store.js //
 import { configureStore } from '@reduxjs/toolkit'
+import userSlice from './videoList'
 
-// 스토어 생성
 export const store = configureStore({
     reducer: {
-        // 3번에서 만들 slice를 여기에 넣을 예정
+        // 3번에서 만든 slice를 여기에 넣는다
+        // name으로 설정했던 것을 key로 사용한 것을 볼 수 있다.
+        user: userSlice,
     },
 })
 
-// useSelector 사용시 타입으로 사용하기 위함
 export type RootState = ReturnType<typeof store.getState>
-// useDispatch를 좀 더 명확하게 사용하기 위함
 export type AppDispatch = typeof store.dispatch
