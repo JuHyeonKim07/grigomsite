@@ -4,7 +4,9 @@ import { vimeoAcsses, youTubeAcsses } from '../apis/Acsses';
 import '../css/Works.css';
 import { Link } from "react-router-dom";
 import { CategoryTabs } from '../component/CategoryTabs'
-
+import { useDispatch, useSelector } from 'react-redux'
+import type { RootState } from '../redux/store'
+// import { getData } from '../redux/videoList'
 
 interface videoList_Interface {
     name: string
@@ -27,12 +29,18 @@ interface videoList_Interface {
 }
 
 function Works() {
-    // const vimeoList = useSelector((state) => state.vimeoList.value)
+    // 1번에서 언급했던 RootState가 useSelector에서 state의 타입으로 사용된 것을 볼 수 있다
+    const dispatch = useDispatch()
+    const count = useSelector((state: any) => state.user)
 
+    console.log(count)
 
     const [videoList, setVideoList] = useState<videoList_Interface[]>([])
 
     useEffect(() => {
+        // dispatch();
+
+
         if (localStorage.getItem("videoList") === null) {
             getVimeoList();
         } else {
@@ -87,10 +95,6 @@ function Works() {
                         </div>
                     )
                 })}
-            </div>
-
-            <div>
-
             </div>
         </>
     )
