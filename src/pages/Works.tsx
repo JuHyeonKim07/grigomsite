@@ -4,9 +4,8 @@ import { vimeoAcsses, youTubeAcsses } from '../apis/Acsses';
 import '../css/Works.css';
 import { Link } from "react-router-dom";
 import { CategoryTabs } from '../component/CategoryTabs'
-import { useDispatch, useSelector } from 'react-redux'
-import type { RootState } from '../redux/store'
-// import { getData } from '../redux/videoList'
+import { useAppDispatch, useAppSelector } from '../hooks/useTypeSelector'
+import { getVimeoList } from '../redux/videoList'
 
 interface videoList_Interface {
     name: string
@@ -28,46 +27,48 @@ interface videoList_Interface {
     }
 }
 
-function Works() {
-    // 1번에서 언급했던 RootState가 useSelector에서 state의 타입으로 사용된 것을 볼 수 있다
-    const dispatch = useDispatch()
-    const count = useSelector((state: any) => state.user)
 
-    console.log(count)
+
+function Works() {
+    const dispatch = useAppDispatch();
+    const { loading, data } = useAppSelector((state) => state);
+
+
+
+    console.log(data)
 
     const [videoList, setVideoList] = useState<videoList_Interface[]>([])
 
     useEffect(() => {
-        // dispatch();
-
-
-        if (localStorage.getItem("videoList") === null) {
-            getVimeoList();
-        } else {
-            // 데이터가 있으면 그냥 있는 데이터 사용
-            setVideoList(
-                JSON.parse(localStorage.getItem('videoList') || "")
-            )
-        }
+        dispatch(getVimeoList());
+        
+        // if (localStorage.getItem("videoList") === null) {
+        //     getVimeoList();
+        // } else {
+        //     // 데이터가 있으면 그냥 있는 데이터 사용
+        //     setVideoList(
+        //         JSON.parse(localStorage.getItem('videoList') || "")
+        //     )
+        // }
     }, [])
 
-    const getVimeoList = async () => {
-        await axios.get(`https://api.vimeo.com/users/${vimeoAcsses.userid}/videos`, {
-            headers: {
-                Authorization: `bearer ${vimeoAcsses.accessToken}`
-            }
-        }).then(res => {
-            setVideoList(res.data.data)
-            localStorage.setItem('videoList', JSON.stringify(res.data.data));
-        }).catch(error => console.error(error))
-    }
+    // const getVimeoList = async () => {
+    //     await axios.get(`https://api.vimeo.com/users/${vimeoAcsses.userid}/videos`, {
+    //         headers: {
+    //             Authorization: `bearer ${vimeoAcsses.accessToken}`
+    //         }
+    //     }).then(res => {
+    //         setVideoList(res.data.data)
+    //         localStorage.setItem('videoList', JSON.stringify(res.data.data));
+    //     }).catch(error => console.error(error))
+    // }
 
-    const getYoutubeList = async () => {
-        await axios.get(`https://www.googleapis.com/youtube/v3/playlistItems?key=${youTubeAcsses.apiKey}&playlistId=${youTubeAcsses.playlistId}&part=snippet&maxResults=30`, {
-        }).then(res => {
+    // const getYoutubeList = async () => {
+    //     await axios.get(`https://www.googleapis.com/youtube/v3/playlistItems?key=${youTubeAcsses.apiKey}&playlistId=${youTubeAcsses.playlistId}&part=snippet&maxResults=30`, {
+    //     }).then(res => {
 
-        })
-    }
+    //     })
+    // }
 
     return (
         <>

@@ -3,73 +3,60 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 import { vimeoAcsses, youTubeAcsses } from '../apis/Acsses';
+import videoList_Interface from "../postModel";
 
-interface MyKnownError {
-    errorMessage: string;
-}
 
-interface RegisterActionType {
-    success: string;
-}
-
-export const registerUser = createAsyncThunk<
-    RegisterActionType,
-    object,
-    { rejectValue: MyKnownError }
->("users/registerUser", async (registerInfo, thunkAPI) => {
-    try {
-        // success 객체가 들어올 것으로 예상됨.
-        const { data } = await axios.get(`https://api.vimeo.com/users/${vimeoAcsses.userid}/videos`, {
-            headers: {
-                Authorization: `bearer ${vimeoAcsses.accessToken}`
-            }
-        })
-        console.log(data)
-        return data;
-    } catch (err) {
-        return thunkAPI.rejectWithValue({
-            errorMessage: "회원가입 실패",
-        });
-    }
-});
-
-export interface InitailStateType {
-    userData: object;
-    error: null | MyKnownError | undefined;
+interface PostState {
     loading: boolean;
+    error: string | null;
+    data: videoList_Interface[] | null;
 }
 
-const initialState: InitailStateType = {
-    userData: {},
-    error: null,
+const initialState = {
     loading: false,
-};
+    error: null,
+    data: null,
+} as PostState;
 
-export const userSlice = createSlice({
-    name: "user",
+// ACTION
+export const getVimeoList = createAsyncThunk(
+    "GET/VIMEO",
+    async (data, thunkAPI) => {
+        try {
+            const response = await axios.get<videoList_Interface[]>(`https://api.vimeo.com/users/${vimeoAcsses.userid}/videos`, {
+                headers: {
+                    Authorization: `bearer ${vimeoAcsses.accessToken}`
+                }
+            })
+            return response.data;
+        } catch (err: any) {
+            return thunkAPI.rejectWithValue({
+                errorMessage: '호출에 실패했습니다.'
+            })
+        }
+    }
+);
+
+// SLICE
+const vimeoSlice = createSlice({
+    name: "post",
     initialState,
     reducers: {},
-    extraReducers: (builder) => {
+    extraReducers(builder) {
         builder
-            // 통신 중
-            .addCase(registerUser.pending, (state) => {
-                state.error = null;
+            .addCase(getVimeoList.pending, (state, action) => {
                 state.loading = true;
             })
-            // 통신 성공
-            .addCase(registerUser.fulfilled, (state, { payload }) => {
-                state.error = null;
+            .addCase(getVimeoList.fulfilled, (state, action: PayloadAction<videoList_Interface[]>) => {
                 state.loading = false;
-                state.userData = payload;
+                state.data = action.payload;
             })
-            // 통신 에러
-            .addCase(registerUser.rejected, (state, { payload }) => {
-                state.error = payload;
-                state.loading = false;
+            .addCase(getVimeoList.rejected, (state, action: PayloadAction<any>) => {
+                state.error = action.payload;
             });
     },
 });
 
-export const { } = userSlice.actions;
 
-export default userSlice.reducer;
+// export const { } = vimeoSlice.actions;
+export default vimeoSlice.reducer;
