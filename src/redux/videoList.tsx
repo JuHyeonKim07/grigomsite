@@ -3,8 +3,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 import { vimeoAcsses, youTubeAcsses } from '../apis/Acsses';
-import videoList_Interface from "../postModel";
-
+import { vimeoResponse, videoList_Interface } from "../postModel";
 
 interface PostState {
     loading: boolean;
@@ -23,12 +22,12 @@ export const getVimeoList = createAsyncThunk(
     "GET/VIMEO",
     async (data, thunkAPI) => {
         try {
-            const response = await axios.get<videoList_Interface[]>(`https://api.vimeo.com/users/${vimeoAcsses.userid}/videos`, {
+            const { data } = await axios.get<videoList_Interface[]>(`https://api.vimeo.com/users/${vimeoAcsses.userid}/videos`, {
                 headers: {
                     Authorization: `bearer ${vimeoAcsses.accessToken}`
                 }
             })
-            return response.data;
+            return data
         } catch (err: any) {
             return thunkAPI.rejectWithValue({
                 errorMessage: '호출에 실패했습니다.'
