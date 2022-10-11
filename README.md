@@ -13,5 +13,6 @@ React Router 를 이용하여 동영상 iframe을 get 방식으로 받아 사용
 
 ## 2022년
 TypeScript 도입, React Class Component => React Hook 으로 변경
+Redux Toolkit 도입 (vimeo api 호출)
 
 
