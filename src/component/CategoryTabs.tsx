@@ -3,6 +3,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import VimeoTab from './VimeoTab';
+import YoutubeTab from './YoutubeTab';
 interface TabPanelProps {
     children?: React.ReactNode;
     index: number;
@@ -27,7 +28,7 @@ function TabPanel(props: TabPanelProps) {
 
             {value === 1 && (
                 <>
-                    YOUTUBE
+                    <YoutubeTab />
                 </>
             )}
         </div>
