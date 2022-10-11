@@ -1,4 +1,17 @@
-type videoList_Interface = {
+export type vimeoResponse = {
+    data: videoList_Interface[]
+    page: number,
+    paging: {
+        first: string
+        last: string
+        next: null
+        previous: null
+    }
+    per_page: number,
+    total: number
+}
+
+export type videoList_Interface = {
     name: string
     pictures: {
         active: boolean
@@ -18,4 +31,3 @@ type videoList_Interface = {
     }
 }
 
-export default videoList_Interface

@@ -10,7 +10,7 @@ type youTubeAccses_Type = {
 
 export const vimeoAcsses: vimeoAcsses_Type = {
     userid: '129526601',
-    accessToken: 'da231ec06f876ff503b91d8152a722a2'
+    accessToken: '2e67543a228bd3ff38761710628657be'
 }
 
 export const youTubeAcsses: youTubeAccses_Type = {
