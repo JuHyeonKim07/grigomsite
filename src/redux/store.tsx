@@ -2,6 +2,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 import vimeoSlice from './vimeoList'
 
+
 export const store = configureStore({
     reducer: vimeoSlice
 })

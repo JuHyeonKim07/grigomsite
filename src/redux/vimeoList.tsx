@@ -2,7 +2,7 @@
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { vimeoAcsses } from '../apis/acsses'
+import { vimeoAcsses, youTubeAcsses } from '../apis/keys'
 import { vimeoResponse } from "../postModel";
 
 interface PostState {
@@ -37,15 +37,13 @@ export const getVimeoList = createAsyncThunk(
 );
 
 // ACTION
-export const getYouTubeList = createAsyncThunk(
+export const getYoutubeList = createAsyncThunk(
     "GET/VIMEO",
     async (data, thunkAPI) => {
         try {
-            const { data } = await axios.get<vimeoResponse>(`https://api.vimeo.com/users/${vimeoAcsses.userid}/videos`, {
-                headers: {
-                    Authorization: `bearer ${vimeoAcsses.accessToken}`
-                }
-            })
+            const { data } = await axios.get<vimeoResponse>(
+                `https://www.googleapis.com/youtube/v3/playlistItems?key=${youTubeAcsses.apiKey}&playlistId=${youTubeAcsses.playlistId}&part=snippet&maxResults=30`
+            )
             return data
         } catch (err: any) {
             return thunkAPI.rejectWithValue({
@@ -58,6 +56,27 @@ export const getYouTubeList = createAsyncThunk(
 
 // SLICE
 const vimeoSlice = createSlice({
+    name: "post",
+    initialState,
+    reducers: {},
+    // createAsyncThunk 호출 처리 = extraReducers
+    extraReducers(builder) {
+        builder
+            .addCase(getVimeoList.pending, (state, action) => {
+                state.loading = true;
+            })
+            .addCase(getVimeoList.fulfilled, (state, action: PayloadAction<vimeoResponse>) => {
+                state.loading = false;
+                state.data = action.payload;
+            })
+            .addCase(getVimeoList.rejected, (state, action: PayloadAction<any>) => {
+                state.error = action.payload;
+            });
+    },
+});
+
+// SLICE
+const youtubeSlice = createSlice({
     name: "post",
     initialState,
     reducers: {},
