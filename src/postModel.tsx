@@ -11,6 +11,7 @@ export type vimeoResponse = {
     total: number
 }
 
+
 export type videoList_Interface = {
     name: string
     pictures: {

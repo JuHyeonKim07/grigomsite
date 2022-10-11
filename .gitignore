@@ -5,8 +5,7 @@
 /.pnp
 .pnp.js
 
-# vimoeAPi
-vimeoAcsses.js
+/src/apis
 
 # testing
 /coverage

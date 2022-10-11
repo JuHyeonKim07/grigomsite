@@ -1,6 +1,6 @@
 // app/store.js //
 import { configureStore } from '@reduxjs/toolkit'
-import vimeoSlice from './videoList'
+import vimeoSlice from './vimeoList'
 
 export const store = configureStore({
     reducer: vimeoSlice
