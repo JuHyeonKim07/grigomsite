@@ -10,7 +10,9 @@ function VimeoTab() {
     const { data, loading, error } = useAppSelector((state) => state.vimeoSlice);
 
     useEffect(() => {
-        dispatch(getVimeoList());
+        if (!data) {
+            dispatch(getVimeoList());
+        }
     }, [])
 
     return (

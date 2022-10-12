@@ -4,6 +4,7 @@ import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import VimeoTab from './VimeoTab';
 import YoutubeTab from './YoutubeTab';
+import Typography from '@mui/material/Typography';
 interface TabPanelProps {
     children?: React.ReactNode;
     index: number;
@@ -20,18 +21,10 @@ function TabPanel(props: TabPanelProps) {
             aria-labelledby={`simple-tab-${index}`}
             {...other}
         >
-            {value === 0 && (
-                <>
-                    <YoutubeTab />
-
-                </>
-            )}
-
-            {value === 1 && (
-                <>
-                    <VimeoTab />
-
-                </>
+            {value === index && (
+                <Box sx={{ p: 3 }}>
+                    <Typography>{children}</Typography>
+                </Box>
             )}
         </div>
     );
@@ -48,15 +41,15 @@ export function CategoryTabs() {
         <Box sx={{ width: '100%' }}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                    <Tab label="Vimeo" />
                     <Tab label="YouTube" />
+                    <Tab label="Vimeo" />
                 </Tabs>
             </Box>
             <TabPanel value={value} index={0}>
-                Item One
+                <YoutubeTab />
             </TabPanel>
             <TabPanel value={value} index={1}>
-                Item Two
+                <VimeoTab />
             </TabPanel>
         </Box>
     );
