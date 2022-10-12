@@ -10,10 +10,10 @@ function YoutubeTab() {
     const { data, loading, error } = useAppSelector((state) => state.youtubeSlice);
 
     useEffect(() => {
-        dispatch(getYoutubeList());
+        if (!data) {
+            dispatch(getYoutubeList());
+        }
     }, [])
-
-    console.log(data, loading, error)
 
     return (
         <>

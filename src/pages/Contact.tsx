@@ -38,8 +38,6 @@ function Contact() {
             ...inputs, // 기존의 input 객체를 복사한 뒤
             [name]: value // name 키를 가진 값을 value 로 설정
         });
-        console.log(phone)
-
     };
 
     const onChangeTextarea = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -48,7 +46,6 @@ function Contact() {
             ...textarea,
             [name]: value
         });
-        console.log(message)
     };
 
     function handleFormSubmit(event: React.FormEvent) {
@@ -68,7 +65,7 @@ function Contact() {
                 method: 'post',
                 url: `${API_PATH}`,
                 headers: { 'content-type': 'application/json' },
-                data: {...inputs, ...textarea}
+                data: { ...inputs, ...textarea }
             }).then(res => {
                 if (res.status === 200) {
                     alert('메일을 전송하였습니다. 홈으로 이동합니다.')
@@ -76,7 +73,7 @@ function Contact() {
                 } else {
                     alert("메일전송에 실패하였습니다.")
                 }
-            }).catch(error => console.log(error));
+            }).catch(error => console.error(error));
             event.preventDefault()
         }
     };

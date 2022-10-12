@@ -36,27 +36,9 @@ export const getVimeoList = createAsyncThunk(
     }
 );
 
-// ACTION
-export const getYoutubeList = createAsyncThunk(
-    "GET/VIMEO",
-    async (data, thunkAPI) => {
-        try {
-            const { data } = await axios.get<vimeoResponse>(
-                `https://www.googleapis.com/youtube/v3/playlistItems?key=${youTubeAcsses.apiKey}&playlistId=${youTubeAcsses.playlistId}&part=snippet&maxResults=30`
-            )
-            return data
-        } catch (err: any) {
-            return thunkAPI.rejectWithValue({
-                errorMessage: '호출에 실패했습니다.'
-            })
-        }
-    }
-);
-
-
 // SLICE
 const vimeoSlice = createSlice({
-    name: "post",
+    name: "vimeo",
     initialState,
     reducers: {},
     // createAsyncThunk 호출 처리 = extraReducers
@@ -74,28 +56,6 @@ const vimeoSlice = createSlice({
             });
     },
 });
-
-// SLICE
-const youtubeSlice = createSlice({
-    name: "post",
-    initialState,
-    reducers: {},
-    // createAsyncThunk 호출 처리 = extraReducers
-    extraReducers(builder) {
-        builder
-            .addCase(getVimeoList.pending, (state, action) => {
-                state.loading = true;
-            })
-            .addCase(getVimeoList.fulfilled, (state, action: PayloadAction<vimeoResponse>) => {
-                state.loading = false;
-                state.data = action.payload;
-            })
-            .addCase(getVimeoList.rejected, (state, action: PayloadAction<any>) => {
-                state.error = action.payload;
-            });
-    },
-});
-
 
 // export const { } = vimeoSlice.actions;
 export default vimeoSlice.reducer;
