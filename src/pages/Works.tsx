@@ -1,7 +1,6 @@
 import { CategoryTabs } from '../component/CategoryTabs';
 import '../css/Works.css';
 
-
 function Works() {
     return (
         <>

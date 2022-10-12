@@ -22,13 +22,15 @@ function TabPanel(props: TabPanelProps) {
         >
             {value === 0 && (
                 <>
-                    <VimeoTab />
+                    <YoutubeTab />
+
                 </>
             )}
 
             {value === 1 && (
                 <>
-                    <YoutubeTab />
+                    <VimeoTab />
+
                 </>
             )}
         </div>
