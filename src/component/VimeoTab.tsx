@@ -7,7 +7,7 @@ import { getVimeoList } from '../redux/vimeoList';
 
 function VimeoTab() {
     const dispatch = useAppDispatch();
-    const { data, loading, error } = useAppSelector((state) => state);
+    const { data, loading, error } = useAppSelector((state) => state.vimeoSlice);
 
     useEffect(() => {
         dispatch(getVimeoList());
@@ -16,7 +16,9 @@ function VimeoTab() {
     return (
         <>
             <div className="imageBox">
-                {
+                {loading ? (
+                    <></>
+                ) : (
                     data &&
                     data.data.map((value, index) => {
                         return (
@@ -33,7 +35,7 @@ function VimeoTab() {
                             </div>
                         )
                     })
-                }
+                )}
             </div>
         </>
     )

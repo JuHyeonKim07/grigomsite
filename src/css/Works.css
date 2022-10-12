@@ -10,6 +10,9 @@
     position  : relative;
     flex-basis: 33.3%;
     width     : 400px;
+    padding   : 10px 10px;
+    opacity   : 0.95;
+
 }
 
 .image__img {

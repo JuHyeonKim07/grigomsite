@@ -48,22 +48,22 @@ export type youtubeResponse = {
                     url: string
                     width: number
                     height: number
-                },
+                }
                 medium: {
                     url: string,
                     width: number,
                     height: number
-                },
+                }
                 high: {
                     url: string,
                     width: number,
                     height: number
-                },
+                }
                 standard: {
                     url: string,
                     width: number,
                     height: number
-                },
+                }
                 maxres: {
                     url: string,
                     width: number,
@@ -72,13 +72,17 @@ export type youtubeResponse = {
             }
             channelTitle: string,
             playlistId: string,
-            position: 0,
+            position: 0
             resourceId: {
                 kind: string,
                 videoId: string
-            },
-            videoOwnerChannelTitle: string,
+            }
+            videoOwnerChannelTitle: string
             videoOwnerChannelId: string
-        }[]
-    }[],
+        }
+    }[]
+    pageInfo: {
+        resultsPerPage: number
+        totalResults: number
+    }
 }
