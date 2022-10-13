@@ -26,7 +26,7 @@ function VimeoTab() {
                         return (
                             <div className="image" key={index}>
                                 <img className="image__img" src={value['pictures']['sizes'][5]['link']} alt="Bricks" />
-                                <Link to={`/Details/${encodeURIComponent(value['embed']['html'])}`}>
+                                <Link to={`/Details/vimeo/${encodeURIComponent(value['embed']['html'])}`}>
                                     <div className="image__overlay image__overlay--primary">
                                         <div className="image__title">Grigom Pictures</div>
                                         <p className="image__description">

@@ -1,11 +1,23 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import '../css/Details.css';
+import { useGetYoutubeItem } from "../hooks/useGetYoutubeItem";
 
-function Details({ match }: any) {
-    // useEffect는 비동기적으로 동작
+type matchTypes = {
+    match: {
+        isExact: boolean
+        params: {
+            data: string
+            type: string
+        }
+        path: string
+        url: string
+    }
+}
+
+function Details({ match }: matchTypes) {
     useEffect(() => {
-        document.getElementsByTagName('iframe')[0].width = "1000px"
-        document.getElementsByTagName('iframe')[0].height = "534px"
+        // document.getElementsByTagName('iframe')[0].width = "1000px"
+        // document.getElementsByTagName('iframe')[0].height = "534px"
     }, []);
     return (
         <div className="details">
@@ -20,7 +32,7 @@ function Details({ match }: any) {
                     dangerouslySetInnerHTML={{ __html: decodeURIComponent(match.params.data) }}>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
 

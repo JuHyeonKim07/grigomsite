@@ -7,7 +7,6 @@ function Header() {
     const onClickLink = () => {
         const inputCheckElement = document.getElementById('menu-toggle') as HTMLInputElement
         inputCheckElement.checked = false;
-
     }
 
     return (
