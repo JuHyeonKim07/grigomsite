@@ -26,7 +26,7 @@ function App() {
                             <Route path="/Brands" component={Brands} />
                             <Route path="/Works" component={Works} />
                             <Route path="/Contact" component={Contact} />
-                            <Route path="/Details/:data" component={Details} />
+                            <Route path="/Details/:type/:data" component={Details} />
                         </Switch>
                     </section>
                 </main>

@@ -1,10 +1,9 @@
-import * as React from 'react';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
+import Tab from '@mui/material/Tab';
+import Tabs from '@mui/material/Tabs';
+import * as React from 'react';
 import VimeoTab from './VimeoTab';
 import YoutubeTab from './YoutubeTab';
-import Typography from '@mui/material/Typography';
 interface TabPanelProps {
     children?: React.ReactNode;
     index: number;
@@ -22,8 +21,8 @@ function TabPanel(props: TabPanelProps) {
             {...other}
         >
             {value === index && (
-                <Box sx={{ p: 3 }}>
-                    <Typography>{children}</Typography>
+                <Box>
+                    {children}
                 </Box>
             )}
         </div>
