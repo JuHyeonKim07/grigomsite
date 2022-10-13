@@ -10,7 +10,6 @@
     position  : relative;
     flex-basis: 33.3%;
     width     : 400px;
-    padding   : 10px 10px;
     opacity   : 0.95;
 
 }
@@ -41,8 +40,12 @@
     backdrop-filter: blur(5px);
 }
 
-.image__overlay--primary {
-    background: #004225;
+.image__overlay--vimeo {
+    background: #0088CB;
+}
+
+.image__overlay--youtube {
+    background: #ff0000;
 }
 
 .image__overlay>* {

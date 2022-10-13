@@ -15,10 +15,6 @@ type matchTypes = {
 }
 
 function Details({ match }: matchTypes) {
-    useEffect(() => {
-        // document.getElementsByTagName('iframe')[0].width = "1000px"
-        // document.getElementsByTagName('iframe')[0].height = "534px"
-    }, []);
     return (
         <div className="details">
             <div className="title-container">
