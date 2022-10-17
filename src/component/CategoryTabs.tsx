@@ -37,13 +37,20 @@ export function CategoryTabs() {
     };
 
     return (
-        <Box sx={{ width: '100%' }}>
-            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                    <Tab label="YouTube" />
-                    <Tab label="Vimeo" />
-                </Tabs>
-            </Box>
+        <Box
+            sx={{ flexGrow: 1, bgcolor: 'background.paper', display: 'flex', height: 224 }}
+        >
+            <Tabs
+                orientation="vertical"
+                variant="scrollable"
+                value={value}
+                onChange={handleChange}
+                aria-label="Vertical tabs example"
+                sx={{ borderRight: 1, borderColor: 'divider' }}
+            >
+                <Tab label="YouTube" />
+                <Tab label="Vimeo" />
+            </Tabs>
             <TabPanel value={value} index={0}>
                 <YoutubeTab />
             </TabPanel>

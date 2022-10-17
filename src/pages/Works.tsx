@@ -1,4 +1,5 @@
 import { CategoryTabs } from '../component/CategoryTabs';
+import VerticalTabs from '../component/Category/Category';
 import '../css/Works.css';
 
 function Works() {
@@ -9,7 +10,8 @@ function Works() {
                     <span>WORKS</span>
                 </div>
             </div>
-            <CategoryTabs />
+            {/* <CategoryTabs /> */}
+            <VerticalTabs />
         </>
     )
 }

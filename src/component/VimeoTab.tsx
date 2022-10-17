@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import '../css/Works.css';
 import { useAppDispatch, useAppSelector } from '../hooks/useTypeSelector';
 import { getVimeoList } from '../redux/vimeoList';
+import Loader from "./Loader";
 
 
 function VimeoTab() {
@@ -19,7 +20,9 @@ function VimeoTab() {
         <>
             <div className="imageBox">
                 {loading ? (
-                    <></>
+                    <>
+                        <Loader />
+                    </>
                 ) : (
                     data &&
                     data.data.map((value, index) => {
