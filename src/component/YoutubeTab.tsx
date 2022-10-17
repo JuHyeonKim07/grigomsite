@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import '../css/Works.css';
 import { useAppDispatch, useAppSelector } from '../hooks/useTypeSelector';
 import { getYoutubeList } from '../redux/youtubeList';
+import Loader from "./Loader";
 
 
 function YoutubeTab() {
@@ -19,7 +20,9 @@ function YoutubeTab() {
         <>
             <div className="imageBox">
                 {loading ? (
-                    <></>
+                    <>
+                        <Loader />
+                    </>
                 ) : (
                     data &&
                     data.items.map((value, index) => {

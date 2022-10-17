@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import '../css/Details.css';
-import { useGetYoutubeItem } from "../hooks/useGetYoutubeItem";
 
 type matchTypes = {
     match: {
