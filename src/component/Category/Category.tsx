@@ -1,8 +1,12 @@
+import { useEffect } from "react";
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { useState } from 'react';
+import { useAppDispatch, useAppSelector } from '../../hooks/useTypeSelector';
+import { getYoutubeList_PlayList } from '../../redux/youtubeList_PlayList';
+
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -38,6 +42,16 @@ function a11yProps(index: number) {
 }
 
 export default function VerticalTabs() {
+    const dispatch = useAppDispatch();
+    const { data, loading, error } = useAppSelector((state) => state.youtube_PlaylistSlice);
+
+    useEffect(() => {
+        if (!data) {
+            dispatch(getYoutubeList_PlayList());
+        }
+    }, [])
+
+
     const [value, setValue] = useState(0);
 
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -46,7 +60,7 @@ export default function VerticalTabs() {
 
     return (
         <Box
-            sx={{ flexGrow: 1, bgcolor: 'background.paper', display: 'flex'}}
+            sx={{ flexGrow: 1, bgcolor: 'background.paper', display: 'flex' }}
         >
             <Tabs
                 orientation="vertical"
@@ -56,35 +70,20 @@ export default function VerticalTabs() {
                 aria-label="Vertical tabs example"
                 sx={{ borderRight: 1, borderColor: 'divider' }}
             >
-                <Tab label="Item One" {...a11yProps(0)} />
-                <Tab label="Item Two" {...a11yProps(1)} />
-                <Tab label="Item Three" {...a11yProps(2)} />
-                <Tab label="Item Four" {...a11yProps(3)} />
-                <Tab label="Item Five" {...a11yProps(4)} />
-                <Tab label="Item Six" {...a11yProps(5)} />
-                <Tab label="Item Seven" {...a11yProps(6)} />
+                {data && data.items.map((value, index) => {
+                    return (
+                        <Tab label={value.snippet.title} {...a11yProps(index)} />
+                    )
+                })}
             </Tabs>
-            <TabPanel value={value} index={0}>
-                Item One
-            </TabPanel>
-            <TabPanel value={value} index={1}>
-                Item Two
-            </TabPanel>
-            <TabPanel value={value} index={2}>
-                Item Three
-            </TabPanel>
-            <TabPanel value={value} index={3}>
-                Item Four
-            </TabPanel>
-            <TabPanel value={value} index={4}>
-                Item Five
-            </TabPanel>
-            <TabPanel value={value} index={5}>
-                Item Six
-            </TabPanel>
-            <TabPanel value={value} index={6}>
-                Item Seven
-            </TabPanel>
+
+            {data && data.items.map((item, index) => {
+                return (
+                    <TabPanel value={value} index={index}>
+                        {item.snippet.title}
+                    </TabPanel>
+                )
+            })}
         </Box>
     );
 }

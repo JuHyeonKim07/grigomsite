@@ -2,17 +2,20 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import '../css/Works.css';
 import { useAppDispatch, useAppSelector } from '../hooks/useTypeSelector';
-import { getYoutubeList } from '../redux/youtubeList';
+import { getYoutubeList_Personal } from '../redux/youtubeList_Personal';
+import { getYoutubeList_Product } from '../redux/youtubeList_Product';
 import Loader from "./Loader";
 
 
 function YoutubeTab() {
     const dispatch = useAppDispatch();
-    const { data, loading, error } = useAppSelector((state) => state.youtubeSlice);
+    const { data, loading, error } = useAppSelector((state) => state.youtube_ProductSlice);
+
 
     useEffect(() => {
         if (!data) {
-            dispatch(getYoutubeList());
+            // Action
+            dispatch(getYoutubeList_Product());
         }
     }, [])
 

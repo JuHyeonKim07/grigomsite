@@ -18,12 +18,12 @@ const initialState = {
 } as PostState;
 
 // ACTION
-export const getYoutubeList = createAsyncThunk(
+export const getYoutubeList_Personal = createAsyncThunk(
     "GET/YOUTUBE",
     async (data, thunkAPI) => {
         try {
             const { data } = await axios.get<youtubeResponse>(
-                `https://www.googleapis.com/youtube/v3/playlistItems?key=${youTubeAcsses.apiKey}&playlistId=${youTubeAcsses.playlistId}&part=snippet&maxResults=30`
+                `https://www.googleapis.com/youtube/v3/playlistItems?key=${youTubeAcsses.apiKey}&playlistId=${youTubeAcsses.playlistId_Personal}&part=snippet&maxResults=30`
             )
             return data
         } catch (err: any) {
@@ -35,25 +35,25 @@ export const getYoutubeList = createAsyncThunk(
 );
 
 // SLICE
-const youtubeSlice = createSlice({
+const youtube_PersonalSlice = createSlice({
     name: "youtube",
     initialState,
     reducers: {},
     // createAsyncThunk 호출 처리 = extraReducers
     extraReducers(builder) {
         builder
-            .addCase(getYoutubeList.pending, (state, action) => {
+            .addCase(getYoutubeList_Personal.pending, (state, action) => {
                 state.loading = true;
             })
-            .addCase(getYoutubeList.fulfilled, (state, action: PayloadAction<youtubeResponse>) => {
+            .addCase(getYoutubeList_Personal.fulfilled, (state, action: PayloadAction<youtubeResponse>) => {
                 state.loading = false;
                 state.data = action.payload;
             })
-            .addCase(getYoutubeList.rejected, (state, action: PayloadAction<any>) => {
+            .addCase(getYoutubeList_Personal.rejected, (state, action: PayloadAction<any>) => {
                 state.error = action.payload;
             });
     },
 });
 
 
-export default youtubeSlice.reducer;
+export default youtube_PersonalSlice.reducer;
