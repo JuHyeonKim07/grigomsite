@@ -19,7 +19,7 @@ const initialState = {
 
 // ACTION
 export const getYoutubeList_Product = createAsyncThunk(
-    "GET/YOUTUBE",
+    "GET/YOUTUBE_PRODUCT",
     async (data, thunkAPI) => {
         try {
             const { data } = await axios.get<youtubeResponse>(
@@ -36,7 +36,7 @@ export const getYoutubeList_Product = createAsyncThunk(
 
 // SLICE
 const youtube_ProductSlice = createSlice({
-    name: "youtube",
+    name: "YOUTUBE_PRODUCT",
     initialState,
     reducers: {},
     // createAsyncThunk 호출 처리 = extraReducers

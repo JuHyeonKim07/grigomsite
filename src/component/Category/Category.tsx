@@ -6,6 +6,7 @@ import Box from '@mui/material/Box';
 import { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/useTypeSelector';
 import { getYoutubeList_PlayList } from '../../redux/youtubeList_PlayList';
+import YoutubeTab from '../YoutubeTab';
 
 
 interface TabPanelProps {
@@ -72,15 +73,15 @@ export default function VerticalTabs() {
             >
                 {data && data.items.map((value, index) => {
                     return (
-                        <Tab label={value.snippet.title} {...a11yProps(index)} />
+                        <Tab label={value.snippet.title} {...a11yProps(index)} key={value.id} onClick={() => console.log(value.id)} />
                     )
                 })}
             </Tabs>
 
             {data && data.items.map((item, index) => {
                 return (
-                    <TabPanel value={value} index={index}>
-                        {item.snippet.title}
+                    <TabPanel value={value} index={index} key={item.id}>
+                        <YoutubeTab channelId={item.id}/>
                     </TabPanel>
                 )
             })}
