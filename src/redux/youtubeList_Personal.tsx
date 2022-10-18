@@ -1,6 +1,6 @@
 // src/_reducers/userSlice.ts // 
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, createReducer } from "@reduxjs/toolkit";
 import axios from "axios";
 import { youTubeAcsses } from '../apis/keys';
 import { youtubeResponse } from "../postModel";
@@ -19,7 +19,7 @@ const initialState = {
 
 // ACTION
 export const getYoutubeList_Personal = createAsyncThunk(
-    "GET/YOUTUBE",
+    "GET/YOUTUBE_PERSONAL",
     async (data, thunkAPI) => {
         try {
             const { data } = await axios.get<youtubeResponse>(
@@ -34,9 +34,11 @@ export const getYoutubeList_Personal = createAsyncThunk(
     }
 );
 
+
+
 // SLICE
 const youtube_PersonalSlice = createSlice({
-    name: "youtube",
+    name: "YOUTUBE_PERSONAL",
     initialState,
     reducers: {},
     // createAsyncThunk 호출 처리 = extraReducers

@@ -1,16 +1,13 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import '../css/Works.css';
-import { useAppDispatch, useAppSelector } from '../hooks/useTypeSelector';
-import { getYoutubeList_Personal } from '../redux/youtubeList_Personal';
-import { getYoutubeList_Product } from '../redux/youtubeList_Product';
-import Loader from "./Loader";
+import { useAppDispatch, useAppSelector } from '../../hooks/useTypeSelector';
+import { getYoutubeList_Personal } from '../../redux/youtubeList_Personal';
+import { getYoutubeList_Product } from '../../redux/youtubeList_Product';
+import Loader from "../Loader";
 
-interface propsTypes {
-    channelId?: string
-}
 
-function YoutubeTab({ channelId }: propsTypes) {
+function ViedoList() {
     const dispatch = useAppDispatch();
     const { data, loading, error } = useAppSelector((state) => state.youtube_PersonalSlice);
 
@@ -58,4 +55,4 @@ function YoutubeTab({ channelId }: propsTypes) {
     )
 }
 
-export default YoutubeTab
+export default ViedoList

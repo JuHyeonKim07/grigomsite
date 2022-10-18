@@ -10,7 +10,6 @@ function Works() {
                     <span>WORKS</span>
                 </div>
             </div>
-            {/* <CategoryTabs /> */}
             <VerticalTabs />
         </>
     )
