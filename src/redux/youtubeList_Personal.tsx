@@ -34,7 +34,15 @@ export const getYoutubeList_Personal = createAsyncThunk(
     }
 );
 
+// 여기에 dispatch 해서 채널 id 가져오기
+const alertSlice = createSlice({
+    name: 'todos',
+    initialState : {
 
+    },
+    reducers: {},
+    extraReducers: (builder) => { }
+});
 
 // SLICE
 const youtube_PersonalSlice = createSlice({

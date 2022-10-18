@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import '../css/Works.css';
@@ -5,6 +6,9 @@ import { useAppDispatch, useAppSelector } from '../hooks/useTypeSelector';
 import { getYoutubeList_Personal } from '../redux/youtubeList_Personal';
 import { getYoutubeList_Product } from '../redux/youtubeList_Product';
 import Loader from "./Loader";
+import { youTubeAcsses } from '../apis/keys';
+import { youtubeResponse } from "../postModel";
+
 
 interface propsTypes {
     channelId?: string
@@ -13,6 +17,13 @@ interface propsTypes {
 function YoutubeTab({ channelId }: propsTypes) {
     const dispatch = useAppDispatch();
     const { data, loading, error } = useAppSelector((state) => state.youtube_PersonalSlice);
+
+    // const getYoutubePlaylist = async () => {
+    //     const { data } = await axios.get<youtubeResponse>(
+    //         `https://www.googleapis.com/youtube/v3/playlistItems?key=${youTubeAcsses.apiKey}&playlistId=${channelId}&part=snippet&maxResults=30`
+    //     )
+    //     return data
+    // }
 
 
     useEffect(() => {
@@ -25,7 +36,7 @@ function YoutubeTab({ channelId }: propsTypes) {
     return (
         <>
             <div className="imageBox">
-                {loading ? (
+                {/* {loading ? (
                     <>
                         <Loader />
                     </>
@@ -52,7 +63,7 @@ function YoutubeTab({ channelId }: propsTypes) {
                             )
                         }
                     })
-                )}
+                )} */}
             </div>
         </>
     )
