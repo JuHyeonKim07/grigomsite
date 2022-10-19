@@ -19,7 +19,7 @@ const initialState = {
 } as PostState;
 
 // ACTION
-export const getYoutubeList_PlayList = createAsyncThunk(
+export const getYoutubeList_Channelid = createAsyncThunk(
     "GET/YOUTUBE_PLAYLIST",
     async (data, thunkAPI) => {
         try {
@@ -43,14 +43,14 @@ const youtube_PlaylistSlice = createSlice({
     // createAsyncThunk 호출 처리 = extraReducers
     extraReducers(builder) {
         builder
-            .addCase(getYoutubeList_PlayList.pending, (state, action) => {
+            .addCase(getYoutubeList_Channelid.pending, (state, action) => {
                 state.loading = true;
             })
-            .addCase(getYoutubeList_PlayList.fulfilled, (state, action: PayloadAction<youtubeResponse>) => {
+            .addCase(getYoutubeList_Channelid.fulfilled, (state, action: PayloadAction<youtubeResponse>) => {
                 state.loading = false;
                 state.data = action.payload;
             })
-            .addCase(getYoutubeList_PlayList.rejected, (state, action: PayloadAction<any>) => {
+            .addCase(getYoutubeList_Channelid.rejected, (state, action: PayloadAction<any>) => {
                 state.error = action.payload;
             });
     },

@@ -18,18 +18,11 @@ function YoutubeTab({ channelId }: propsTypes) {
     const dispatch = useAppDispatch();
     const { data, loading, error } = useAppSelector((state) => state.youtube_PersonalSlice);
 
-    // const getYoutubePlaylist = async () => {
-    //     const { data } = await axios.get<youtubeResponse>(
-    //         `https://www.googleapis.com/youtube/v3/playlistItems?key=${youTubeAcsses.apiKey}&playlistId=${channelId}&part=snippet&maxResults=30`
-    //     )
-    //     return data
-    // }
-
-
     useEffect(() => {
         if (!data) {
             // Action
-            dispatch(getYoutubeList_Personal());
+            dispatch(getYoutubeList_Personal({ channelId }))
+
         }
     }, [])
 

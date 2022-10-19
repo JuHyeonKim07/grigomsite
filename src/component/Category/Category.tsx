@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/useTypeSelector';
-import { getYoutubeList_PlayList } from '../../redux/youtubeList_PlayList';
+import { getYoutubeList_Channelid } from '../../redux/youtubeList_Channelid';
 import YoutubeTab from '../YoutubeTab';
 
 
@@ -48,7 +48,7 @@ export default function VerticalTabs() {
 
     useEffect(() => {
         if (!data) {
-            dispatch(getYoutubeList_PlayList());
+            dispatch(getYoutubeList_Channelid());
         }
     }, [])
 
