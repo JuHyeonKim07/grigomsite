@@ -11,25 +11,23 @@ import { youtubeResponse } from "../postModel";
 
 
 interface propsTypes {
-    channelId?: string
+    channelId: string
 }
 
 function YoutubeTab({ channelId }: propsTypes) {
     const dispatch = useAppDispatch();
-    const { data, loading, error } = useAppSelector((state) => state.youtube_PersonalSlice);
+    const { data, loading, error } = useAppSelector((state) => state.youtube_ProductSlice);
 
     useEffect(() => {
-        if (!data) {
-            // Action
-            dispatch(getYoutubeList_Personal({ channelId }))
-
-        }
+        // if (!data) {
+            dispatch(getYoutubeList_Product(channelId))
+        // }
     }, [])
 
     return (
         <>
             <div className="imageBox">
-                {/* {loading ? (
+                {loading ? (
                     <>
                         <Loader />
                     </>
@@ -39,7 +37,7 @@ function YoutubeTab({ channelId }: propsTypes) {
                         if (Object.keys(value.snippet.thumbnails).length !== 0) {
                             return (
                                 <div className="image" key={index}>
-                                    <img className="image__img" src={value.snippet.thumbnails.maxres.url} alt='bricks' />
+                                    <img className="image__img" src={value.snippet.thumbnails.maxres ? value.snippet.thumbnails.maxres.url : value.snippet.thumbnails.high.url} alt='bricks' />
                                     <Link to={`/Details/youtube/${encodeURIComponent(
                                         `<iframe id="player" type="text/html" 
                                         src="http://www.youtube.com/embed/${value.snippet.resourceId.videoId}"
@@ -56,7 +54,7 @@ function YoutubeTab({ channelId }: propsTypes) {
                             )
                         }
                     })
-                )} */}
+                )}
             </div>
         </>
     )

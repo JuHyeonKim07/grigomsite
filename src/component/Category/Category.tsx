@@ -20,6 +20,7 @@ function TabPanel(props: TabPanelProps) {
 
     return (
         <div
+            style={{width : '100%'}}
             role="tabpanel"
             hidden={value !== index}
             id={`vertical-tabpanel-${index}`}
@@ -27,8 +28,8 @@ function TabPanel(props: TabPanelProps) {
             {...other}
         >
             {value === index && (
-                <Box sx={{ p: 3 }}>
-                    <Typography>{children}</Typography>
+                <Box>
+                    {children}
                 </Box>
             )}
         </div>
@@ -61,7 +62,7 @@ export default function VerticalTabs() {
 
     return (
         <Box
-            sx={{ flexGrow: 1, bgcolor: 'background.paper', display: 'flex' }}
+            sx={{ bgcolor: 'background.paper', display: 'flex' }}
         >
             <Tabs
                 orientation="vertical"
@@ -69,7 +70,7 @@ export default function VerticalTabs() {
                 value={value}
                 onChange={handleChange}
                 aria-label="Vertical tabs example"
-                sx={{ borderRight: 1, borderColor: 'divider' }}
+                sx={{ borderRight: 1, borderColor: 'divider', minWidth : '200px' }}
             >
                 {data && data.items.map((value, index) => {
                     return (
@@ -81,7 +82,7 @@ export default function VerticalTabs() {
             {data && data.items.map((item, index) => {
                 return (
                     <TabPanel value={value} index={index} key={item.id}>
-                        <YoutubeTab channelId={item.id}/>
+                        <YoutubeTab channelId={item.id} />
                     </TabPanel>
                 )
             })}

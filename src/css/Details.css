@@ -9,9 +9,9 @@
     display  : block;
     margin   : 0 auto;
     position : absolute;
-    top      : 50%;
+    top      : 40%;
     left     : 50%;
     transform: translate(-50%, -50%);
-    width    : 80%;
-    height   : 80%;
+    width    : 70%;
+    height   : 70%;
 }

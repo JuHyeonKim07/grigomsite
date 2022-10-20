@@ -1,5 +1,5 @@
+/** 그리곰 픽쳐스 상업영상 채널아이디를 이용하여 재생목록 불러오기 재생목록은 카테고리로 사용됨.*/
 
-// src/_reducers/userSlice.ts // 
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
@@ -20,11 +20,12 @@ const initialState = {
 
 // ACTION
 export const getYoutubeList_Channelid = createAsyncThunk(
-    "GET/YOUTUBE_PLAYLIST",
+    "GET/YOUTUBE_CHANNELID",
     async (data, thunkAPI) => {
         try {
             const { data } = await axios.get<youtubeResponse>(
-                `https://www.googleapis.com/youtube/v3/playlists?key=${youTubeAcsses.apiKey}&channelId=${youTubeAcsses.channelId}&part=snippet&maxResults=30`
+                `https://www.googleapis.com/youtube/v3/playlists?key=${youTubeAcsses.apiKey}&channelId=UCvpIHsNLXfpOj_uMgI62I2A&part=snippet&maxResults=30`
+                // channelId=UCvpIHsNLXfpOj_uMgI62I2A - 그리곰 픽쳐스 상업 유튜브 채널
             )
             return data
         } catch (err: any) {
