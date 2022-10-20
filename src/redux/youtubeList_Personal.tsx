@@ -20,10 +20,11 @@ const initialState = {
 // ACTION
 export const getYoutubeList_Personal = createAsyncThunk(
     "GET/YOUTUBE_PERSONAL",
-    async (data, thunkAPI) => {
+    async (args, thunkAPI) => {
         try {
             const { data } = await axios.get<youtubeResponse>(
-                `https://www.googleapis.com/youtube/v3/playlistItems?key=${youTubeAcsses.apiKey}&playlistId=${youTubeAcsses.playlistId_Personal}&part=snippet&maxResults=30`
+                `https://www.googleapis.com/youtube/v3/playlistItems?key=${youTubeAcsses.apiKey}&playlistId=PLThDpQpBDLxfDomsur6lq4TQ384K8pStY&part=snippet&maxResults=30`
+                // playlistId=PLThDpQpBDLxfDomsur6lq4TQ384K8pStY - 그리곰 픽쳐스 개인 영상 
             )
             return data
         } catch (err: any) {
@@ -37,7 +38,7 @@ export const getYoutubeList_Personal = createAsyncThunk(
 // 여기에 dispatch 해서 채널 id 가져오기
 const alertSlice = createSlice({
     name: 'todos',
-    initialState : {
+    initialState: {
 
     },
     reducers: {},

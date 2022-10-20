@@ -1,22 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
 
 .imageBox {
-    position : relative;
-    display  : flex;
-    flex-wrap: wrap;
+    position  : relative;
+    display   : flex;
+    flex-wrap : wrap;
+    flex-basis: 100%;
 }
 
 .image {
-    position  : relative;
-    flex-basis: 33.3%;
-    width     : 400px;
-    opacity   : 0.95;
-
+    position   : relative;
+    flex-shrink: 0;
+    width      : 33.3%;
 }
 
 .image__img {
-    display: block;
-    width  : 100%;
+    display   : block;
+    width     : 100%;
+    object-fit: cover;
+    height    : 305px;
 }
 
 .image__overlay {
