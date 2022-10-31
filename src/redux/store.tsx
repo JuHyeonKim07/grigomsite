@@ -3,7 +3,7 @@ import { configureStore } from '@reduxjs/toolkit'
 import vimeoSlice from './vimeoList'
 import youtube_ProductSlice from './youtubeList_Product'
 import youtube_PersonalSlice from './youtubeList_Personal'
-import youtube_PlaylistSlice from './youtubeList_Channelid'
+import youtube_PlaylistSlice from './youtubeList_Playlist'
 
 
 

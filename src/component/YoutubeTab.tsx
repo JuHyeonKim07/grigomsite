@@ -1,26 +1,22 @@
-import axios from "axios";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import '../css/Works.css';
 import { useAppDispatch, useAppSelector } from '../hooks/useTypeSelector';
-import { getYoutubeList_Personal } from '../redux/youtubeList_Personal';
 import { getYoutubeList_Product } from '../redux/youtubeList_Product';
 import Loader from "./Loader";
-import { youTubeAcsses } from '../apis/keys';
-import { youtubeResponse } from "../postModel";
 
 
 interface propsTypes {
-    channelId: string
+    playlistId: string
 }
 
-function YoutubeTab({ channelId }: propsTypes) {
+function YoutubeTab({ playlistId }: propsTypes) {
     const dispatch = useAppDispatch();
     const { data, loading, error } = useAppSelector((state) => state.youtube_ProductSlice);
 
     useEffect(() => {
         // if (!data) {
-            dispatch(getYoutubeList_Product(channelId))
+            dispatch(getYoutubeList_Product(playlistId))
         // }
     }, [])
 

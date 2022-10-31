@@ -20,10 +20,10 @@ const initialState = {
 // ACTION
 export const getYoutubeList_Product = createAsyncThunk(
     "GET/YOUTUBE_PRODUCT",
-    async (channelId: string, thunkAPI) => {
+    async (playlistId: string, thunkAPI) => {
         try {
             const { data } = await axios.get<youtubeResponse>(
-                `https://www.googleapis.com/youtube/v3/playlistItems?key=${youTubeAcsses.apiKey}&playlistId=${channelId}&part=snippet&maxResults=30`
+                `https://www.googleapis.com/youtube/v3/playlistItems?key=${youTubeAcsses.apiKey}&playlistId=${playlistId}&part=snippet&maxResults=30`
             )
             return data
         } catch (err: any) {
