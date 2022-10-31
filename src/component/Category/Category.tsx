@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/useTypeSelector';
-import { getYoutubeList_Channelid } from '../../redux/youtubeList_Channelid';
+import { youtubeList_Playlist } from '../../redux/youtubeList_Playlist';
 import YoutubeTab from '../YoutubeTab';
 
 
@@ -49,7 +49,8 @@ export default function VerticalTabs() {
 
     useEffect(() => {
         if (!data) {
-            dispatch(getYoutubeList_Channelid());
+            dispatch(youtubeList_Playlist('UCvpIHsNLXfpOj_uMgI62I2A'));
+            dispatch(youtubeList_Playlist('UCBXwSHfXqRIJkaPs3ZMzKVA'));
         }
     }, [])
 
@@ -82,7 +83,7 @@ export default function VerticalTabs() {
             {data && data.items.map((item, index) => {
                 return (
                     <TabPanel value={value} index={index} key={item.id}>
-                        <YoutubeTab channelId={item.id} />
+                        <YoutubeTab playlistId={item.id} />
                     </TabPanel>
                 )
             })}

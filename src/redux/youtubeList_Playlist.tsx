@@ -19,12 +19,12 @@ const initialState = {
 } as PostState;
 
 // ACTION
-export const getYoutubeList_Channelid = createAsyncThunk(
+export const youtubeList_Playlist = createAsyncThunk(
     "GET/YOUTUBE_CHANNELID",
-    async (data, thunkAPI) => {
+    async (arg : string, thunkAPI) => {
         try {
             const { data } = await axios.get<youtubeResponse>(
-                `https://www.googleapis.com/youtube/v3/playlists?key=${youTubeAcsses.apiKey}&channelId=UCvpIHsNLXfpOj_uMgI62I2A&part=snippet&maxResults=30`
+                `https://www.googleapis.com/youtube/v3/playlists?key=${youTubeAcsses.apiKey}&channelId=${arg}&part=snippet&maxResults=30`
                 // channelId=UCvpIHsNLXfpOj_uMgI62I2A - 그리곰 픽쳐스 상업 유튜브 채널
             )
             return data
@@ -44,14 +44,14 @@ const youtube_PlaylistSlice = createSlice({
     // createAsyncThunk 호출 처리 = extraReducers
     extraReducers(builder) {
         builder
-            .addCase(getYoutubeList_Channelid.pending, (state, action) => {
+            .addCase(youtubeList_Playlist.pending, (state, action) => {
                 state.loading = true;
             })
-            .addCase(getYoutubeList_Channelid.fulfilled, (state, action: PayloadAction<youtubeResponse>) => {
+            .addCase(youtubeList_Playlist.fulfilled, (state, action: PayloadAction<youtubeResponse>) => {
                 state.loading = false;
                 state.data = action.payload;
             })
-            .addCase(getYoutubeList_Channelid.rejected, (state, action: PayloadAction<any>) => {
+            .addCase(youtubeList_Playlist.rejected, (state, action: PayloadAction<any>) => {
                 state.error = action.payload;
             });
     },
