@@ -45,14 +45,16 @@ function a11yProps(index: number) {
 
 export default function VerticalTabs() {
     const dispatch = useAppDispatch();
-    const { data, loading, error } = useAppSelector((state) => state.youtube_PlaylistSlice);
+    const { data, loading, error, cartegory } = useAppSelector((state) => state.youtube_PlaylistSlice);
 
     useEffect(() => {
-        if (!data) {
+        // if (!data) {
             dispatch(youtubeList_Playlist('UCvpIHsNLXfpOj_uMgI62I2A'));
             dispatch(youtubeList_Playlist('UCBXwSHfXqRIJkaPs3ZMzKVA'));
-        }
+        // }
     }, [])
+
+    console.log(cartegory)
 
 
     const [value, setValue] = useState(0);
