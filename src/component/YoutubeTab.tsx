@@ -16,7 +16,7 @@ function YoutubeTab({ playlistId }: propsTypes) {
 
     useEffect(() => {
         // if (!data) {
-            dispatch(getYoutubeList_Product(playlistId))
+        dispatch(getYoutubeList_Product(playlistId))
         // }
     }, [])
 

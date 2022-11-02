@@ -15,7 +15,7 @@ function ViedoList() {
     useEffect(() => {
         if (!data) {
             // Action
-            // dispatch(getYoutubeList_Personal());
+            dispatch(getYoutubeList_Personal());
         }
     }, [])
 

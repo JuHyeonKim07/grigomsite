@@ -3,7 +3,7 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { vimeoAcsses, youTubeAcsses } from '../apis/keys';
-import { vimeoResponse } from "../postModel";
+import { vimeoResponse } from "../getTypes";
 
 interface PostState {
     loading: boolean;

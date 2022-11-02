@@ -31,6 +31,7 @@ export type vimeoResponse = {
 }
 
 // Youtube
+
 export type youtubeResponse = {
     kind: string
     etag: string
@@ -86,3 +87,51 @@ export type youtubeResponse = {
         totalResults: number
     }
 }
+
+export type cartegory = {
+    kind: string
+    etag: string
+    id: string
+    snippet: {
+        publishedAt: string
+        channelId: string
+        title: string
+        description: string
+        thumbnails: {
+            default: {
+                url: string
+                width: number
+                height: number
+            }
+            medium: {
+                url: string,
+                width: number,
+                height: number
+            }
+            high: {
+                url: string,
+                width: number,
+                height: number
+            }
+            standard: {
+                url: string,
+                width: number,
+                height: number
+            }
+            maxres: {
+                url: string,
+                width: number,
+                height: number
+            }
+        }
+        channelTitle: string,
+        playlistId: string,
+        position: 0
+        resourceId: {
+            kind: string,
+            videoId: string
+        }
+        videoOwnerChannelTitle: string
+        videoOwnerChannelId: string
+    }
+}[]

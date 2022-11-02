@@ -20,7 +20,7 @@ function TabPanel(props: TabPanelProps) {
 
     return (
         <div
-            style={{width : '100%'}}
+            style={{ width: '100%' }}
             role="tabpanel"
             hidden={value !== index}
             id={`vertical-tabpanel-${index}`}
@@ -45,17 +45,12 @@ function a11yProps(index: number) {
 
 export default function VerticalTabs() {
     const dispatch = useAppDispatch();
-    const { data, loading, error, cartegory } = useAppSelector((state) => state.youtube_PlaylistSlice);
+    const { loading, error, cartegory } = useAppSelector((state) => state.youtube_PlaylistSlice);
 
     useEffect(() => {
-        // if (!data) {
-            dispatch(youtubeList_Playlist('UCvpIHsNLXfpOj_uMgI62I2A'));
-            dispatch(youtubeList_Playlist('UCBXwSHfXqRIJkaPs3ZMzKVA'));
-        // }
+        dispatch(youtubeList_Playlist('UCvpIHsNLXfpOj_uMgI62I2A'));
+        dispatch(youtubeList_Playlist('UCBXwSHfXqRIJkaPs3ZMzKVA'));
     }, [])
-
-    console.log(cartegory)
-
 
     const [value, setValue] = useState(0);
 
@@ -73,16 +68,16 @@ export default function VerticalTabs() {
                 value={value}
                 onChange={handleChange}
                 aria-label="Vertical tabs example"
-                sx={{ borderRight: 1, borderColor: 'divider', minWidth : '200px' }}
+                sx={{ borderRight: 1, borderColor: 'divider', minWidth: '200px' }}
             >
-                {data && data.items.map((value, index) => {
+                {cartegory && cartegory.map((value, index) => {
                     return (
-                        <Tab label={value.snippet.title} {...a11yProps(index)} key={value.id} onClick={() => console.log(value.id)} />
+                        <Tab label={value.snippet.title} {...a11yProps(index)} key={index} onClick={() => console.log(value.id)} />
                     )
                 })}
             </Tabs>
 
-            {data && data.items.map((item, index) => {
+            {cartegory && cartegory.map((item, index) => {
                 return (
                     <TabPanel value={value} index={index} key={item.id}>
                         <YoutubeTab playlistId={item.id} />
