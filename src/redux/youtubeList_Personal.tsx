@@ -3,7 +3,7 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 import { createAsyncThunk, createSlice, createReducer } from "@reduxjs/toolkit";
 import axios from "axios";
 import { youTubeAcsses } from '../apis/keys';
-import { youtubeResponse } from "../postModel";
+import { youtubeResponse } from "../getTypes";
 
 interface PostState {
     loading: boolean;
@@ -34,16 +34,6 @@ export const getYoutubeList_Personal = createAsyncThunk(
         }
     }
 );
-
-// 여기에 dispatch 해서 채널 id 가져오기
-const alertSlice = createSlice({
-    name: 'todos',
-    initialState: {
-
-    },
-    reducers: {},
-    extraReducers: (builder) => { }
-});
 
 // SLICE
 const youtube_PersonalSlice = createSlice({

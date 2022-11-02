@@ -4,19 +4,17 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { youTubeAcsses } from '../apis/keys';
-import { youtubeResponse } from "../postModel";
+import { youtubeResponse, cartegory } from "../getTypes";
 
 interface PostState {
     loading: boolean;
     error: string | null;
-    data: youtubeResponse | null;
-    cartegory: {}[]
+    cartegory: cartegory
 }
 
 const initialState = {
     loading: false,
     error: null,
-    data: null,
     cartegory: []
 } as PostState;
 
@@ -51,8 +49,7 @@ const youtube_PlaylistSlice = createSlice({
             })
             .addCase(youtubeList_Playlist.fulfilled, (state, action: PayloadAction<youtubeResponse>) => {
                 state.loading = false;
-                state.data = action.payload;
-                state.cartegory = [...state.data?.items, ...action.payload.items];
+                state.cartegory.push(...action.payload.items)
             })
             .addCase(youtubeList_Playlist.rejected, (state, action: PayloadAction<any>) => {
                 state.error = action.payload;
