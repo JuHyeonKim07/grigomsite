@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import '../css/Works.css';
 import { useAppDispatch, useAppSelector } from '../hooks/useTypeSelector';
@@ -10,19 +10,62 @@ interface propsTypes {
     playlistId: string
 }
 
+interface useIntersectionObserverProps {
+    root?: null;
+    rootMargin?: string;
+    threshold?: number;
+    onIntersect: IntersectionObserverCallback;
+}
+
 function YoutubeTab({ playlistId }: propsTypes) {
     const dispatch = useAppDispatch();
     const { data, loading, error } = useAppSelector((state) => state.youtube_ProductSlice);
 
+    const targetStyle = { width: "100%", height: "100vh", backgroundColor : 'green' };
+
+
+
+    const useIntersectionObserver = ({
+        root,
+        rootMargin = '0px',
+        threshold = 0,
+        onIntersect,
+    }: useIntersectionObserverProps) => {
+        const [target, setTarget] = useState<HTMLElement | null | undefined>(null);
+
+        useEffect(() => {
+            if (!target) return;        // 감지할 대상이 falsy하면 observer를 생성, 이용하지 못하도록 반환하는 역할을 한다.
+
+            const observer: IntersectionObserver = new IntersectionObserver(        // 관찰자
+                onIntersect,
+                { root, rootMargin, threshold  }                                    // 뷰포트 대신 사용할 요소 / root 에 margin / 가기성 조절 0 ~ 1까지
+            );
+
+            observer.observe(target);
+            return () => observer.unobserve(target);                                // 관찰 중지
+        }, [onIntersect, root, rootMargin, target, threshold]);
+
+        return { setTarget };
+    };
+
+    const onIntersect: IntersectionObserverCallback = ([{ isIntersecting, intersectionRatio }]) => {   // 관찰 대상의 루트 요소, 교차 상태로 들어가는가의 여부 (boolean)
+        console.log(`감지결과 : ${isIntersecting} ${intersectionRatio}`);
+    };
+
+    const { setTarget } = useIntersectionObserver({ onIntersect });
+
+
     useEffect(() => {
-        // if (!data) {
-        dispatch(getYoutubeList_Product(playlistId))
-        // }
+        if (!data) {
+            dispatch(getYoutubeList_Product(playlistId))
+        }
     }, [])
 
     return (
+
         <>
-            <div className="imageBox">
+            <div ref={setTarget} style={targetStyle}></div>
+            {/* <div className="imageBox">
                 {loading ? (
                     <>
                         <Loader />
@@ -51,7 +94,7 @@ function YoutubeTab({ playlistId }: propsTypes) {
                         }
                     })
                 )}
-            </div>
+            </div> */}
         </>
     )
 }
