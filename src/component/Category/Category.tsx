@@ -48,8 +48,10 @@ export default function VerticalTabs() {
     const { loading, error, cartegory } = useAppSelector((state) => state.youtube_PlaylistSlice);
 
     useEffect(() => {
-        dispatch(youtubeList_Playlist('UCvpIHsNLXfpOj_uMgI62I2A'));
-        dispatch(youtubeList_Playlist('UCBXwSHfXqRIJkaPs3ZMzKVA'));
+        if (cartegory.length === 0) {
+            dispatch(youtubeList_Playlist('UCvpIHsNLXfpOj_uMgI62I2A'));
+            dispatch(youtubeList_Playlist('UCBXwSHfXqRIJkaPs3ZMzKVA'));
+        }
     }, [])
 
     const [value, setValue] = useState(0);
