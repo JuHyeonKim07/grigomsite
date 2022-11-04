@@ -20,52 +20,35 @@ interface useIntersectionObserverProps {
 function YoutubeTab({ playlistId }: propsTypes) {
     const dispatch = useAppDispatch();
     const { data, loading, error } = useAppSelector((state) => state.youtube_ProductSlice);
-
-    const targetStyle = { width: "100%", height: "100vh", backgroundColor : 'green' };
-
-
-
-    const useIntersectionObserver = ({
-        root,
-        rootMargin = '0px',
-        threshold = 0,
-        onIntersect,
-    }: useIntersectionObserverProps) => {
-        const [target, setTarget] = useState<HTMLElement | null | undefined>(null);
-
-        useEffect(() => {
-            if (!target) return;        // 감지할 대상이 falsy하면 observer를 생성, 이용하지 못하도록 반환하는 역할을 한다.
-
-            const observer: IntersectionObserver = new IntersectionObserver(        // 관찰자
-                onIntersect,
-                { root, rootMargin, threshold  }                                    // 뷰포트 대신 사용할 요소 / root 에 margin / 가기성 조절 0 ~ 1까지
-            );
-
-            observer.observe(target);
-            return () => observer.unobserve(target);                                // 관찰 중지
-        }, [onIntersect, root, rootMargin, target, threshold]);
-
-        return { setTarget };
-    };
-
-    const onIntersect: IntersectionObserverCallback = ([{ isIntersecting, intersectionRatio }]) => {   // 관찰 대상의 루트 요소, 교차 상태로 들어가는가의 여부 (boolean)
-        console.log(`감지결과 : ${isIntersecting} ${intersectionRatio}`);
-    };
-
-    const { setTarget } = useIntersectionObserver({ onIntersect });
+    const [target, setTarget] = useState<HTMLElement | null | undefined>(null);
+    let observer: IntersectionObserver
 
 
     useEffect(() => {
-        if (!data) {
-            dispatch(getYoutubeList_Product(playlistId))
-        }
+        dispatch(getYoutubeList_Product(playlistId))
     }, [])
 
-    return (
+    useEffect(() => {
+        let observer: IntersectionObserver;
+        if (target) {
+            const onIntersect : IntersectionObserverCallback = async ([entry], observer) => {
+                if (entry.isIntersecting) {
+                    observer.unobserve(entry.target);
+                    // await fetchData();
+                    console.log('hello')
+                    observer.observe(entry.target);
+                }
+            };
+            observer = new IntersectionObserver(onIntersect, { threshold: 1 }); // 추가된 부분
+            observer.observe(target);
+        }
+        return () => observer && observer.disconnect();
+    }, [target]);
 
+
+    return (
         <>
-            <div ref={setTarget} style={targetStyle}></div>
-            {/* <div className="imageBox">
+            <div className="imageBox">
                 {loading ? (
                     <>
                         <Loader />
@@ -75,7 +58,7 @@ function YoutubeTab({ playlistId }: propsTypes) {
                     data.items.map((value, index) => {
                         if (Object.keys(value.snippet.thumbnails).length !== 0) {
                             return (
-                                <div className="image" key={index}>
+                                <div className="image" key={index} ref={setTarget}>
                                     <img className="image__img" src={value.snippet.thumbnails.maxres ? value.snippet.thumbnails.maxres.url : value.snippet.thumbnails.high.url} alt='bricks' />
                                     <Link to={`/Details/youtube/${encodeURIComponent(
                                         `<iframe id="player" type="text/html" 
@@ -94,7 +77,7 @@ function YoutubeTab({ playlistId }: propsTypes) {
                         }
                     })
                 )}
-            </div> */}
+            </div>
         </>
     )
 }
