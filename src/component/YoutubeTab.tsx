@@ -30,19 +30,18 @@ function YoutubeTab({ playlistId }: propsTypes) {
 
     useEffect(() => {
         let observer: IntersectionObserver;
-        if (target) {
-            const onIntersect : IntersectionObserverCallback = async ([entry], observer) => {
-                if (entry.isIntersecting) {
-                    observer.unobserve(entry.target);
-                    // await fetchData();
-                    console.log('hello')
-                    observer.observe(entry.target);
-                }
-            };
-            observer = new IntersectionObserver(onIntersect, { threshold: 1 }); // 추가된 부분
-            observer.observe(target);
-        }
-        return () => observer && observer.disconnect();
+
+        if(!target) return
+
+        const onIntersect: IntersectionObserverCallback = async ([entry], observer) => {
+            if (entry.isIntersecting) {
+                observer.observe(entry.target);
+                console.log('hello')
+            }
+        };
+        observer = new IntersectionObserver(onIntersect, { threshold: 1 }); // 추가된 부분
+        observer.observe(target);
+        return () => observer.unobserve(target);
     }, [target]);
 
 
