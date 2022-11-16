@@ -13,6 +13,31 @@ button {
     text-decoration: none;
 }
 
+.title-container {
+    width          : 100%;
+    display        : flex;
+    justify-content: center;
+    padding        : 70px 0px;
+    border-bottom  : 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.title {
+    font-size    : 15vw;
+    font-family  : 'Montserrat', sans-serif;
+    font-weight  : 600;
+    color        : #24252A;
+    text-align   : center;
+    padding      : 10px 0px;
+    /* background: red; */
+}
+
+.title-div {
+    z-index    : 3;
+    font-weight: 500;
+    font-size  : 30px;
+    width      : 30%;
+}
+
 .header-container {
     display        : flex;
     align-items    : center;
@@ -96,7 +121,7 @@ button {
         width              : 30px;
         background-color   : black;
         transition-duration: .25s;
-        z-index            : 2;
+        z-index            : 3;
     }
 
     .menu-btn>span::before {
@@ -110,7 +135,7 @@ button {
     }
 
     .menu-box {
-        z-index            : 1;
+        z-index            : 2;
         display            : flex;
         flex-direction     : column;
         align-items        : center;

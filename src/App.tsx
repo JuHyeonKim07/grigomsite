@@ -1,15 +1,18 @@
-import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 import './App.css';
-
-
-import Header from './component/Header'
-import About from "./pages/About";
-import Brands from './pages/Brands'
-import Works from './pages/Works'
-import Contact from './pages/Contact'
-import Details from './pages/Details'
-import Footer from './component/Footer'
+import Footer from './component/Footer';
+import Header from './component/Header';
+import About from "./pages/About/About";
+import Brands from './pages/Brands/Brands';
+import Contact from './pages/Contact/Contact';
+import Details from './pages/Details/Details';
+import Works from './pages/Works/Works';
+import './pages/About/About.css'
+import './pages/Brands/Brands.css'
+import './pages/Contact/Contact.css'
+import './pages/Details/Details.css'
+import './pages/Works/Works.css'
+import './component/Category/Category.css'
 
 
 function App() {

@@ -1,9 +1,7 @@
-import { useEffect } from "react";
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import { useState } from 'react';
+import Tab from '@mui/material/Tab';
+import Tabs from '@mui/material/Tabs';
+import { useEffect, useRef, useState } from "react";
 import { useAppDispatch, useAppSelector } from '../../hooks/useTypeSelector';
 import { youtubeList_Playlist } from '../../redux/youtubeList_Playlist';
 import YoutubeTab from '../YoutubeTab';
@@ -17,7 +15,6 @@ interface TabPanelProps {
 
 function TabPanel(props: TabPanelProps) {
     const { children, value, index, ...other } = props;
-
     return (
         <div
             style={{ width: '100%' }}
@@ -36,21 +33,18 @@ function TabPanel(props: TabPanelProps) {
     );
 }
 
-function a11yProps(index: number) {
-    return {
-        id: `vertical-tab-${index}`,
-        'aria-controls': `vertical-tabpanel-${index}`,
-    };
-}
-
 export default function VerticalTabs() {
     const dispatch = useAppDispatch();
     const { loading, error, cartegory } = useAppSelector((state) => state.youtube_PlaylistSlice);
+    const [tabVisible, setTablVisible] = useState(false)
+    const CartegoryRef = useRef<HTMLDivElement>(null);
+
+
 
     useEffect(() => {
         if (cartegory.length === 0) {
             dispatch(youtubeList_Playlist('UCvpIHsNLXfpOj_uMgI62I2A'));
-            dispatch(youtubeList_Playlist('UCBXwSHfXqRIJkaPs3ZMzKVA'));
+            // dispatch(youtubeList_Playlist('UCBXwSHfXqRIJkaPs3ZMzKVA'));
         }
     }, [])
 
@@ -60,32 +54,59 @@ export default function VerticalTabs() {
         setValue(newValue);
     };
 
+    const tabVisibleBtn = () => {
+        if (!tabVisible) {
+            if (CartegoryRef.current) {
+                CartegoryRef.current.style.marginLeft = '-200px'
+                setTablVisible(true)
+            }
+        } else {
+            if (CartegoryRef.current) {
+                CartegoryRef.current.style.marginLeft = ''
+                setTablVisible(false)
+            }
+        }
+    };
     return (
-        <Box
-            sx={{ bgcolor: 'background.paper', display: 'flex' }}
-        >
-            <Tabs
-                orientation="vertical"
-                variant="scrollable"
-                value={value}
-                onChange={handleChange}
-                aria-label="Vertical tabs example"
-                sx={{ borderRight: 1, borderColor: 'divider', minWidth: '200px' }}
+        <>
+            <Box
+                className='category-container'
+                sx={{ bgcolor: 'background.paper' }}
+                ref={CartegoryRef}
             >
-                {cartegory && cartegory.map((value, index) => {
+                <div style={{ display: 'flex' }}>
+                    <Tabs
+                        orientation="vertical"
+                        variant="scrollable"
+                        value={value}
+                        onChange={handleChange}
+                        aria-label="Vertical tabs example"
+                        sx={{ borderRight: 1, borderColor: 'divider', minWidth: '200px' }}
+                    >
+                        {cartegory && cartegory.map((value, index) => {
+                            return (
+                                <Tab label={value.snippet.title} key={index} />
+                            )
+                        })}
+                    </Tabs>
+                    <div className='tabCloseBtn' onClick={tabVisibleBtn} >
+                        <div>
+                            ME
+                        </div>
+                        <div>
+                            NU
+                        </div>
+                    </div>
+                </div>
+
+                {cartegory && cartegory.map((item, index) => {
                     return (
-                        <Tab label={value.snippet.title} {...a11yProps(index)} key={index} onClick={() => console.log(value.id)} />
+                        <TabPanel value={value} index={index} key={item.id} >
+                            <YoutubeTab playlistId={item.id} />
+                        </TabPanel>
                     )
                 })}
-            </Tabs>
-
-            {cartegory && cartegory.map((item, index) => {
-                return (
-                    <TabPanel value={value} index={index} key={item.id}>
-                        <YoutubeTab playlistId={item.id} />
-                    </TabPanel>
-                )
-            })}
-        </Box>
+            </Box>
+        </>
     );
 }

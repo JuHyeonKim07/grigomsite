@@ -25,7 +25,6 @@ export const youtubeList_Playlist = createAsyncThunk(
         try {
             const { data } = await axios.get<youtubeResponse>(
                 `https://www.googleapis.com/youtube/v3/playlists?key=${youTubeAcsses.apiKey}&channelId=${channelId}&part=snippet&maxResults=30`
-                // channelId=UCvpIHsNLXfpOj_uMgI62I2A - 그리곰 픽쳐스 상업 유튜브 채널
             )
             return data
         } catch (err: any) {
@@ -44,12 +43,13 @@ const youtube_PlaylistSlice = createSlice({
     // createAsyncThunk 호출 처리 = extraReducers
     extraReducers(builder) {
         builder
-            .addCase(youtubeList_Playlist.pending, (state, action) => {
+            .addCase(youtubeList_Playlist.pending, (state) => {
                 state.loading = true;
             })
             .addCase(youtubeList_Playlist.fulfilled, (state, action: PayloadAction<youtubeResponse>) => {
                 state.loading = false;
-                state.cartegory.push(...action.payload.items)
+                state.cartegory = action.payload.items
+                // state.cartegory.push(...action.payload.items)
             })
             .addCase(youtubeList_Playlist.rejected, (state, action: PayloadAction<any>) => {
                 state.error = action.payload;

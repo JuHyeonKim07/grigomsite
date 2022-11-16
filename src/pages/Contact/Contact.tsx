@@ -1,7 +1,6 @@
 import { Button } from "@material-ui/core";
 import axios from "axios";
 import React, { useState } from "react";
-import '../css/Contact.css';
 
 type inputTypes = {
     company: string;

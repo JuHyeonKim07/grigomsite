@@ -1,6 +1,6 @@
 // src/_reducers/userSlice.ts // 
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { createAsyncThunk, createSlice, createReducer } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { youTubeAcsses } from '../apis/keys';
 import { youtubeResponse } from "../getTypes";
