@@ -1,6 +1,4 @@
-import { CategoryTabs } from '../component/CategoryTabs';
-import VerticalTabs from '../component/Category/Category';
-import '../css/Works.css';
+import VerticalTabs from '../../component/Category/Category';
 
 function Works() {
     return (

@@ -1,4 +1,3 @@
-// src/_reducers/userSlice.ts // 
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
@@ -18,7 +17,7 @@ const initialState = {
 } as PostState;
 
 // ACTION
-export const getYoutubeList_Product = createAsyncThunk(
+export const getYoutubeList_Videos = createAsyncThunk(
     "GET/YOUTUBE_PRODUCT",
     async (playlistId: string, thunkAPI) => {
         try {
@@ -35,25 +34,25 @@ export const getYoutubeList_Product = createAsyncThunk(
 );
 
 // SLICE
-const youtube_ProductSlice = createSlice({
+const youtube_VideosSlice = createSlice({
     name: "YOUTUBE_PRODUCT",
     initialState,
     reducers: {},
     // createAsyncThunk 호출 처리 = extraReducers
     extraReducers(builder) {
         builder
-            .addCase(getYoutubeList_Product.pending, (state, action) => {
+            .addCase(getYoutubeList_Videos.pending, (state, action) => {
                 state.loading = true;
             })
-            .addCase(getYoutubeList_Product.fulfilled, (state, action: PayloadAction<youtubeResponse>) => {
+            .addCase(getYoutubeList_Videos.fulfilled, (state, action: PayloadAction<youtubeResponse>) => {
                 state.loading = false;
                 state.data = action.payload;
             })
-            .addCase(getYoutubeList_Product.rejected, (state, action: PayloadAction<any>) => {
+            .addCase(getYoutubeList_Videos.rejected, (state, action: PayloadAction<any>) => {
                 state.error = action.payload;
             });
     },
 });
 
 
-export default youtube_ProductSlice.reducer;
+export default youtube_VideosSlice.reducer;

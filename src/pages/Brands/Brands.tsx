@@ -1,6 +1,3 @@
-import React from "react";
-import '../css/Brand.css';
-
 const brandList = [
     { src: "/logo/koreaculture_logo.png", alt: "culturekorea_logo" },
     { src: "/logo/danawa_logo.jpg", alt: "danawa_logo" },

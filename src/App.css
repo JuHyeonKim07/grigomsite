@@ -1,33 +1,7 @@
 .wrapper {
-    height         : 100vh;
     display        : flex;
     flex-direction : column;
     justify-content: space-between;
 }
 
 
-.title-container {
-    width          : 100%;
-    display        : flex;
-    justify-content: center;
-    padding        : 70px 0px;
-    border-bottom  : 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.title {
-    font-size    : 15vw;
-    font-family  : 'Montserrat', sans-serif;
-    font-weight  : 600;
-    color        : #24252A;
-    text-align   : center;
-    padding      : 10px 0px;
-    /* background: red; */
-}
-
-
-.title-div {
-    z-index    : 2;
-    font-weight: 500;
-    font-size  : 30px;
-    width      : 30%;
-}

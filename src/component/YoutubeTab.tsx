@@ -1,8 +1,7 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import '../css/Works.css';
 import { useAppDispatch, useAppSelector } from '../hooks/useTypeSelector';
-import { getYoutubeList_Product } from '../redux/youtubeList_Product';
+import { getYoutubeList_Videos } from '../redux/youtubeList_GetVideos';
 import Loader from "./Loader";
 
 
@@ -10,40 +9,13 @@ interface propsTypes {
     playlistId: string
 }
 
-interface useIntersectionObserverProps {
-    root?: null;
-    rootMargin?: string;
-    threshold?: number;
-    onIntersect: IntersectionObserverCallback;
-}
-
 function YoutubeTab({ playlistId }: propsTypes) {
     const dispatch = useAppDispatch();
-    const { data, loading, error } = useAppSelector((state) => state.youtube_ProductSlice);
-    const [target, setTarget] = useState<HTMLElement | null | undefined>(null);
-    let observer: IntersectionObserver
-
+    const { data, loading, error } = useAppSelector((state) => state.youtube_VideosSlice);
 
     useEffect(() => {
-        dispatch(getYoutubeList_Product(playlistId))
+        dispatch(getYoutubeList_Videos(playlistId))
     }, [])
-
-    useEffect(() => {
-        let observer: IntersectionObserver;
-
-        if(!target) return
-
-        const onIntersect: IntersectionObserverCallback = async ([entry], observer) => {
-            if (entry.isIntersecting) {
-                observer.observe(entry.target);
-                console.log('hello')
-            }
-        };
-        observer = new IntersectionObserver(onIntersect, { threshold: 1 }); // 추가된 부분
-        observer.observe(target);
-        return () => observer.unobserve(target);
-    }, [target]);
-
 
     return (
         <>
@@ -57,7 +29,7 @@ function YoutubeTab({ playlistId }: propsTypes) {
                     data.items.map((value, index) => {
                         if (Object.keys(value.snippet.thumbnails).length !== 0) {
                             return (
-                                <div className="image" key={index} ref={setTarget}>
+                                <div className="image" key={index}>
                                     <img className="image__img" src={value.snippet.thumbnails.maxres ? value.snippet.thumbnails.maxres.url : value.snippet.thumbnails.high.url} alt='bricks' />
                                     <Link to={`/Details/youtube/${encodeURIComponent(
                                         `<iframe id="player" type="text/html" 

@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
 
 .imageBox {
-    position  : relative;
     display   : flex;
     flex-wrap : wrap;
     flex-basis: 100%;
@@ -17,7 +16,7 @@
     display   : block;
     width     : 100%;
     object-fit: cover;
-    height    : 305px;
+    height    : 340px;
 }
 
 .image__overlay {
@@ -41,12 +40,8 @@
     backdrop-filter: blur(5px);
 }
 
-.image__overlay--vimeo {
-    background: #0088CB;
-}
-
 .image__overlay--youtube {
-    background: #ff0000;
+    background: #000000;
 }
 
 .image__overlay>* {

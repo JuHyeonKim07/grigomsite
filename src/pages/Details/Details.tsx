@@ -1,6 +1,3 @@
-import { useEffect } from "react";
-import '../css/Details.css';
-
 type matchTypes = {
     match: {
         isExact: boolean
@@ -14,6 +11,7 @@ type matchTypes = {
 }
 
 function Details({ match }: matchTypes) {
+    console.log(match)
     return (
         <div className="details">
             <div className="title-container">
