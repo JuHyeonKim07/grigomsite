@@ -12,6 +12,19 @@
     width      : 33.3%;
 }
 
+@keyframes move {
+
+    /* keyframe */
+    from {
+        left: 0;
+    }
+
+    /* keyframe */
+    to {
+        left: 300px;
+    }
+}
+
 .image__img {
     display   : block;
     width     : 100%;

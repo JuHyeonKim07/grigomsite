@@ -89,7 +89,7 @@ export default function VerticalTabs() {
                             )
                         })}
                     </Tabs>
-                    <div className='tabCloseBtn' onClick={tabVisibleBtn} >
+                    <div className={`tabCloseBtn`} onClick={tabVisibleBtn} >
                         <div>
                             ME
                         </div>
