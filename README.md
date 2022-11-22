@@ -12,6 +12,9 @@ Viemo api 를 이용해 Works, Detail 페이지 생성
 React Router 를 이용하여 동영상 iframe을 get 방식으로 받아 사용하였음.
 
 ## 2022년
+
+디자인 개편
+
 TypeScript 도입, React Class Component => React Hook 으로 변경
 
 Vimeo 영상 Youtube로 이전
