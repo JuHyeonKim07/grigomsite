@@ -15,12 +15,14 @@ React Router 를 이용하여 동영상 iframe을 get 방식으로 받아 사용
 
 디자인 개편
 
+ignore 추가 
+
 TypeScript 도입, React Class Component => React Hook 으로 변경
 
 Vimeo 영상 Youtube로 이전
 
 Redux Toolkit 도입 (Youtube API 호출)
 
-가비아에서 AWS 로 서버이전 및 웹서버 구축, HTTPS 적용
+가비아에서 AWS 로 서버이전 및 nginx 웹서버 구축, HTTPS 적용
 
 
