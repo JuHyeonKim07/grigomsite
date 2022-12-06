@@ -34,9 +34,9 @@ function Header() {
                         <li>
                             <Link to="/Brands" onClick={onClickLink}>BRANDS</Link>
                         </li>
-                        <li>
+                        {/* <li>
                             <Link to="/Contact" onClick={onClickLink}>CONTACT</Link>
-                        </li>
+                        </li> */}
                     </ul>
                 </div>
 
