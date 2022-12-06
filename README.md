@@ -25,4 +25,5 @@ Redux Toolkit 도입 (Youtube API 호출)
 
 가비아에서 AWS 로 서버이전 및 nginx 웹서버 구축, HTTPS 적용
 
+PHP Mail() => PHPMailer 
 
