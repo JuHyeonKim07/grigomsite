@@ -62,7 +62,7 @@ function Contact() {
         } else {
             axios({
                 method: 'post',
-                url: `${API_PATH}`,
+                url: API_PATH,
                 headers: { 'content-type': 'application/json' },
                 data: { ...inputs, ...textarea }
             }).then(res => {
@@ -77,7 +77,7 @@ function Contact() {
         }
     };
 
-    const API_PATH: string = 'http://grigompictures.com/index.php'
+    const API_PATH: string = 'https://grigompictures.com/index.php'
 
     return (
         <div>
@@ -88,7 +88,7 @@ function Contact() {
             </div>
 
             <div className="Contact">
-                <form>
+                <form method="POST">
                     <div>
                         <label>회사명</label>
                         <input
