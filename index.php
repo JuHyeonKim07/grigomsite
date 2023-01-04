@@ -1,4 +1,10 @@
 <?php
+
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
+header("Access-Control-Allow-Headers: X-PINGOTHER, Content-Type, Authorization");
+header("Access-Control-Max-Age: 86400");
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\SMTP;
@@ -32,7 +38,7 @@ require '/usr/share/php/libphp-phpmailer/src/SMTP.php';
             $mail->SMTPSecure = "tls";                                                  // SSL을 사용함
 
             $mail->Username = "director@grigompictures.com";                            // Gmail 계정
-            $mail->Password = ""; 
+            $mail->Password = "VNyzOyTNos3S"; 
 
             $mail->SetFrom('director@grigompictures.com');           // 보내는 사람 email 주소와 표시될 이름 (표시될 이름은 생략가능)
             $mail->AddAddress('director@grigompictures.com');        // 받을 사람 email 주소와 표시될 이름 (표시될 이름은 생략가능)
