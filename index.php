@@ -1,8 +1,13 @@
 <?php
+
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
+header("Access-Control-Allow-Headers: X-PINGOTHER, Content-Type, Authorization");
+header("Access-Control-Max-Age: 86400");
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\SMTP;
-
 
 require '/usr/share/php/libphp-phpmailer/src/Exception.php';
 require '/usr/share/php/libphp-phpmailer/src/PHPMailer.php';

@@ -34,15 +34,14 @@ function Header() {
                         <li>
                             <Link to="/Brands" onClick={onClickLink}>BRANDS</Link>
                         </li>
-                        {/* <li>
+                        <li>
                             <Link to="/Contact" onClick={onClickLink}>CONTACT</Link>
-                        </li> */}
+                        </li>
                     </ul>
                 </div>
 
                 <div className="service-div">
-                    {/* <div>Vimeo</div>
-                    <div>instagram</div> */}
+                   
                 </div>
             </div>
         </header>
