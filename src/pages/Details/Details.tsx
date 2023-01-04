@@ -20,14 +20,9 @@ function Details({ match }: matchTypes) {
             </div>
 
             <div className="details_box">
-                {/* <div className="details_iframe"
-                    dangerouslySetInnerHTML={{ __html: decodeURIComponent(match.params.data) }}>
-                </div> */}
                 <div className="details_iframe">
                     <iframe id="player" src={`https://www.youtube.com/embed/${match.params.data}`} frameBorder="0"></iframe>
                 </div>
-
-
             </div>
         </div >
     );
