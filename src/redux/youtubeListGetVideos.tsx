@@ -1,4 +1,6 @@
-// src/_reducers/userSlice.ts // 
+/** 그리곰 픽쳐스 영상리스트 불러오기*/
+/** Playlist 를 이용한 카테고리를 통해 정보를 불러옴 */
+
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
@@ -17,14 +19,15 @@ const initialState = {
     data: null,
 } as PostState;
 
+const BASE_URL = 'https://www.googleapis.com/youtube/v3'
+
 // ACTION
-export const getYoutubeList_Personal = createAsyncThunk(
-    "GET/YOUTUBE_PERSONAL",
-    async (args, thunkAPI) => {
+export const getYoutubeListVideosAction = createAsyncThunk(
+    "GET/YOUTUBE_PRODUCT",
+    async (playlistId: string, thunkAPI) => {
         try {
             const { data } = await axios.get<youtubeResponse>(
-                `https://www.googleapis.com/youtube/v3/playlistItems?key=${youTubeAcsses.apiKey}&playlistId=PLThDpQpBDLxfDomsur6lq4TQ384K8pStY&part=snippet&maxResults=30`
-                // playlistId=PLThDpQpBDLxfDomsur6lq4TQ384K8pStY - 그리곰 픽쳐스 개인 영상 
+                `${BASE_URL}/playlistItems?key=${youTubeAcsses.apiKey}&playlistId=${playlistId}&part=snippet&maxResults=30`
             )
             return data
         } catch (err: any) {
@@ -36,25 +39,26 @@ export const getYoutubeList_Personal = createAsyncThunk(
 );
 
 // SLICE
-const youtube_PersonalSlice = createSlice({
-    name: "YOUTUBE_PERSONAL",
+const youtubeVideosList = createSlice({
+    name: "YOUTUBE_PRODUCT",
     initialState,
     reducers: {},
     // createAsyncThunk 호출 처리 = extraReducers
     extraReducers(builder) {
         builder
-            .addCase(getYoutubeList_Personal.pending, (state, action) => {
+            .addCase(getYoutubeListVideosAction.pending, (state, action) => {
                 state.loading = true;
             })
-            .addCase(getYoutubeList_Personal.fulfilled, (state, action: PayloadAction<youtubeResponse>) => {
+            .addCase(getYoutubeListVideosAction.fulfilled, (state, action: PayloadAction<youtubeResponse>) => {
                 state.loading = false;
                 state.data = action.payload;
             })
-            .addCase(getYoutubeList_Personal.rejected, (state, action: PayloadAction<any>) => {
+            .addCase(getYoutubeListVideosAction.rejected, (state, action: PayloadAction<any>) => {
+                state.loading = false;
                 state.error = action.payload;
             });
     },
 });
 
 
-export default youtube_PersonalSlice.reducer;
+export default youtubeVideosList.reducer;

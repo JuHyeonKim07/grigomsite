@@ -18,13 +18,15 @@ const initialState = {
     cartegory: []
 } as PostState;
 
+const BASE_URL = 'https://www.googleapis.com/youtube/v3'
+
 // ACTION
-export const youtubeList_Playlist = createAsyncThunk(
+export const youtubeListPlaylistAction = createAsyncThunk(
     "GET/YOUTUBE_CHANNELID",
     async (channelId: string, thunkAPI) => {
         try {
             const { data } = await axios.get<youtubeResponse>(
-                `https://www.googleapis.com/youtube/v3/playlists?key=${youTubeAcsses.apiKey}&channelId=${channelId}&part=snippet&maxResults=30`
+                `${BASE_URL}/playlists?key=${youTubeAcsses.apiKey}&channelId=${channelId}&part=snippet&maxResults=30`
             )
             return data
         } catch (err: any) {
@@ -36,26 +38,26 @@ export const youtubeList_Playlist = createAsyncThunk(
 );
 
 // SLICE
-const youtube_PlaylistSlice = createSlice({
+const youtubeCategory = createSlice({
     name: "YOUTUBE_PLAYLIST",
     initialState,
     reducers: {},
     // createAsyncThunk 호출 처리 = extraReducers
     extraReducers(builder) {
         builder
-            .addCase(youtubeList_Playlist.pending, (state) => {
+            .addCase(youtubeListPlaylistAction.pending, (state) => {
                 state.loading = true;
             })
-            .addCase(youtubeList_Playlist.fulfilled, (state, action: PayloadAction<youtubeResponse>) => {
+            .addCase(youtubeListPlaylistAction.fulfilled, (state, action: PayloadAction<youtubeResponse>) => {
                 state.loading = false;
                 state.cartegory = action.payload.items
-                // state.cartegory.push(...action.payload.items)
             })
-            .addCase(youtubeList_Playlist.rejected, (state, action: PayloadAction<any>) => {
+            .addCase(youtubeListPlaylistAction.rejected, (state, action: PayloadAction<any>) => {
+                state.loading = false;
                 state.error = action.payload;
             });
     },
 });
 
 
-export default youtube_PlaylistSlice.reducer;
+export default youtubeCategory.reducer;

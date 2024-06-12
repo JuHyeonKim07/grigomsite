@@ -1,13 +1,10 @@
 // app/store.js //
 import { configureStore } from '@reduxjs/toolkit'
-import youtube_VideosSlice from './youtubeList_GetVideos'
-import youtube_PersonalSlice from './youtubeList_Personal'
-import youtube_PlaylistSlice from './youtubeList_Playlist'
-
-
+import youtubeVideosList from './youtubeListGetVideos'
+import youtubeCategory from './youtubeListPlaylist'
 
 export const store = configureStore({
-    reducer: { youtube_VideosSlice, youtube_PersonalSlice, youtube_PlaylistSlice }
+    reducer: { youtubeVideosList, youtubeCategory }
 })
 
 export type RootState = ReturnType<typeof store.getState>;

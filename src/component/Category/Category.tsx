@@ -1,11 +1,10 @@
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
-import { useEffect, useRef, useState } from "react";
-import { useAppDispatch, useAppSelector } from '../../hooks/useTypeSelector';
-import { youtubeList_Playlist } from '../../redux/youtubeList_Playlist';
-import YoutubeTab from '../YoutubeTab';
-
+import { useRef, useState } from "react";
+import { useAppSelector } from '../../hooks/useTypeSelector';
+import YoutubeVideoList from './YoutubeVideoList';
+import MenuIcon from '@mui/icons-material/Menu';
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -34,19 +33,9 @@ function TabPanel(props: TabPanelProps) {
 }
 
 export default function VerticalTabs() {
-    const dispatch = useAppDispatch();
-    const { loading, error, cartegory } = useAppSelector((state) => state.youtube_PlaylistSlice);
-    const [tabVisible, setTablVisible] = useState(false)
+    const { cartegory } = useAppSelector((state) => state.youtubeCategory);
+    const [tabVisible, setTablVisible] = useState(false);
     const CartegoryRef = useRef<HTMLDivElement>(null);
-
-
-
-    useEffect(() => {
-        if (cartegory.length === 0) {
-            dispatch(youtubeList_Playlist('UCvpIHsNLXfpOj_uMgI62I2A'));
-            // dispatch(youtubeList_Playlist('UCBXwSHfXqRIJkaPs3ZMzKVA'));
-        }
-    }, [])
 
     const [value, setValue] = useState(0);
 
@@ -57,16 +46,17 @@ export default function VerticalTabs() {
     const tabVisibleBtn = () => {
         if (!tabVisible) {
             if (CartegoryRef.current) {
-                CartegoryRef.current.style.marginLeft = '-200px'
-                setTablVisible(true)
+                CartegoryRef.current.style.marginLeft = '-200px';
+                setTablVisible(true);
             }
         } else {
             if (CartegoryRef.current) {
-                CartegoryRef.current.style.marginLeft = ''
-                setTablVisible(false)
+                CartegoryRef.current.style.marginLeft = '';
+                setTablVisible(false);
             }
         }
     };
+
     return (
         <>
             <Box
@@ -82,30 +72,37 @@ export default function VerticalTabs() {
                         onChange={handleChange}
                         aria-label="Vertical tabs example"
                         sx={{ borderRight: 1, borderColor: 'divider', minWidth: '200px' }}
+                        TabIndicatorProps={{
+                            sx: {
+                                backgroundColor: 'orange', // indicator 색상
+                                width: '3px', // indicator 두께
+                                borderRadius: '4px', // indicator 모서리 둥글게
+                                height: 'auto', // indicator 높이 자동 조절
+                            }
+                        }}
                     >
-                        {cartegory && cartegory.map((value, index) => {
-                            return (
-                                <Tab label={value.snippet.title} key={index} />
-                            )
-                        })}
+                        {cartegory && cartegory.map((value, index) => (
+                            <Tab label={value.snippet.title} key={index}
+                                sx={{
+                                    color: 'black', // 기본 폰트 색상
+                                    '&.Mui-selected': {
+                                        color: 'orange', // 선택된 탭의 폰트 색상
+                                    },
+                                }}
+                            />
+                        ))}
                     </Tabs>
                     <div className={`tabCloseBtn`} onClick={tabVisibleBtn} >
-                        <div>
-                            ME
-                        </div>
-                        <div>
-                            NU
-                        </div>
+                        <MenuIcon />
                     </div>
                 </div>
 
-                {cartegory && cartegory.map((item, index) => {
-                    return (
-                        <TabPanel value={value} index={index} key={item.id} >
-                            <YoutubeTab playlistId={item.id} />
-                        </TabPanel>
-                    )
-                })}
+                {/* 영상 리스트 */}
+                {cartegory && cartegory.map((item, index) => (
+                    <TabPanel value={value} index={index} key={item.id}>
+                        <YoutubeVideoList playlistId={item.id} />
+                    </TabPanel>
+                ))}
             </Box>
         </>
     );
