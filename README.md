@@ -27,3 +27,27 @@ Redux Toolkit 도입 (Youtube API 호출)
 
 PHP Mail() => PHPMailer 
 
+## 2024년
+
+채널이 변경되어 카테고리 및 영상이 나오지 않는 오류수정
+메뉴 디자인 변경, works 에서 카테고리를 불러 로딩창 추가
+
+영상리스트를 불러오지 못했을 경우 에러 및 로딩중 추가
+
+
+
+
+### setting 
+
+CRA
+Node 18.20.3 기존 16에서 변경
+
+```
+  "scripts": {
+    "start": "export NODE_OPTIONS=--openssl-legacy-provider && react-scripts start",
+    "build": "export NODE_OPTIONS=--openssl-legacy-provider && react-scripts build",
+    "test": "export NODE_OPTIONS=--openssl-legacy-provider && react-scripts test",
+    "eject": "react-scripts eject"
+  },
+```
+SSL 레거시로 인한 스크립트 수정
