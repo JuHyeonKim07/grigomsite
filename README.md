@@ -34,7 +34,10 @@ PHP Mail() => PHPMailer
 
 영상리스트를 불러오지 못했을 경우 에러 및 로딩중 추가
 
+## 8월
 
+요청으로 사이트 종료, AWS 인스턴스 삭제 
+Github Page 로 올려둘 예정.
 
 
 ### setting 
