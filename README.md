@@ -1,56 +1,37 @@
 # GrigomSite
-#그리곰 픽쳐스 회사 사이트 입니다.
 
-## 2020년 작업.
+<img src="https://github.com/user-attachments/assets/b94c960f-8fe5-435a-8ef5-990850c644b9" alt="favicon" width="600" height="600">
 
-React JS, Axios, React Router, Material - UI 사용
-PHP 와 가비아 아파치 웹서버를 이용하여 메일 전송 기능을 구현하였습니다.
+Grigom Studio (구 Grigom Pictures)의 포트폴리오 사이트 입니다. 2024년 8월 경 법인 설립으로 해당 사이트는 폐쇄하였습니다.
 
-Naver 및 Google 의 검색 엔진에 보이도록 meta 를 추가하였습니다.
+[Grigom Studio YouTube Channel](https://www.youtube.com/@Grigom)
 
-Viemo api 를 이용해 Works, Detail 페이지 생성
-React Router 를 이용하여 동영상 iframe을 get 방식으로 받아 사용하였음.
-
-## 2022년
-
-디자인 개편
-
-ignore 추가 
-
-TypeScript 도입, React Class Component => React Hook 으로 변경
-
-Vimeo 영상 Youtube로 이전
-
-Redux Toolkit 도입 (Youtube API 호출)
-
-가비아에서 AWS 로 서버이전 및 nginx 웹서버 구축, HTTPS 적용
-
-PHP Mail() => PHPMailer 
-
-## 2024년
-
-채널이 변경되어 카테고리 및 영상이 나오지 않는 오류수정
-메뉴 디자인 변경, works 에서 카테고리를 불러 로딩창 추가
-
-영상리스트를 불러오지 못했을 경우 에러 및 로딩중 추가
-
-## 8월
-
-요청으로 사이트 종료, AWS 인스턴스 삭제 
-Github Page 로 올려둘 예정.
+# 🛠️ 기술 스택
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Redux Toolkit](https://img.shields.io/badge/Redux%20Toolkit-764ABC?style=for-the-badge&logo=redux&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)
+![AWS EC2](https://img.shields.io/badge/AWS%20EC2-232F3E?style=for-the-badge&logo=amazonaws&logoColor=FF9900)
+![NGINX](https://img.shields.io/badge/NGINX-009639?style=for-the-badge&logo=nginx&logoColor=white)
 
 
-### setting 
+# 프로젝트 개요 
+Redux, TypeScript 를 사용해 보지않아 기술스택을 경험하고 프로젝트를 운영해보기 위해 시작한 프로젝트 입니다. 실제 회사 소개 홈페이지로 사용됐습니다.
 
-CRA
-Node 18.20.3 기존 16에서 변경
+### 🎥 유튜브 영상 관리
+- YouTube API를 호출하여 영상 리스트를 가져오고, 선택한 영상을 재생할 수 있는 기능 구현.
+- Redux Toolkit을 사용하여 영상 데이터와 상태를 효율적으로 관리.
 
-```
-  "scripts": {
-    "start": "export NODE_OPTIONS=--openssl-legacy-provider && react-scripts start",
-    "build": "export NODE_OPTIONS=--openssl-legacy-provider && react-scripts build",
-    "test": "export NODE_OPTIONS=--openssl-legacy-provider && react-scripts test",
-    "eject": "react-scripts eject"
-  },
-```
-SSL 레거시로 인한 스크립트 수정
+### 📫 메일 전송
+- PHPMailer를 활용하여 네이버웍스를 통해 메일을 전송하는 기능 구현.
+- 간단한 설정으로 사용자가 메일 전송을 테스트할 수 있도록 구성.
+
+### 💻 웹 서버 구축 및 SPA 오류 해결
+- 초기에는 가비아를 통해 Apache 웹 서버를 사용하였으나, SPA(단일 페이지 애플리케이션)의 고질적인 문제인 새로고침 시 404 오류가 발생하여 Apache 서버의 환경 설정을 변경하려 했으나, 가비아의 공용 서버 환경으로 인해 설정 변경 불가.
+- AWS EC2와 Nginx를 사용하여 직접 웹 서버를 구축
+
+# 기술적 도전과 해결 방법
+
+- [Notion - 그리곰 픽쳐스 개선기 및 회고](https://www.notion.so/ethankyle/16478d0d128480e391a4f9bb8052c544)
+- [Notion - 아마존 AWS EC2 구축기](https://www.notion.so/ethankyle/AWS-EC2-16478d0d1284807e9b7cedccac08b59d)
+- [Notion - PHPMailer 구현기](https://www.notion.so/ethankyle/PHPMailer-16478d0d128480f1be1be3a8f9e93327?pvs=25)
