@@ -2,9 +2,13 @@
 
 <img src="https://github.com/user-attachments/assets/b94c960f-8fe5-435a-8ef5-990850c644b9" alt="favicon" width="600" height="600">
 
-Grigom Studio (구 Grigom Pictures)의 포트폴리오 사이트 입니다. 2024년 8월 경 법인 설립으로 해당 사이트는 폐쇄하였습니다.
+Grigom Studio (구 Grigom Pictures)의 포트폴리오 사이트 입니다. 
 
-[Grigom Studio YouTube Channel](https://www.youtube.com/@Grigom)
+2024년 8월 경 법인 설립으로 해당 사이트는 현재사용하고 있지않습니다. 포토폴리오 용으로 Github Pages 로 변경했습니다.
+
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Online-181717?style=for-the-badge&logo=github)](https://ethankylekim.github.io/grigomsite/)
+
+[![YouTube Channel](https://img.shields.io/badge/YouTube-Grigom%20Studio-FF0000?style=for-the-badge&logo=youtube)](https://www.youtube.com/@Grigom)
 
 # 🛠️ 기술 스택
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
