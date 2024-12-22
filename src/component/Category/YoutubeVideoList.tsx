@@ -26,7 +26,7 @@ function YoutubeVideoList({ playlistId }: propsTypes) {
     return (
         <>
             <div className="imageBox">
-                {data && data.items.map((value, index) => (
+                {data && data.items.map((value: any, index: number) => (
                     Object.keys(value.snippet.thumbnails).length !== 0 && (
                         <div className="image" key={index}>
                             <img

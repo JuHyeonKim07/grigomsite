@@ -3,7 +3,7 @@ function About() {
         <div className="info-div">
 
             <div className="info-image">
-                <img className="shot_range" src="/image/shot_range.webp" alt="shot_range" width="100%" />
+                <img className="shot_range" src="image/shot_range.webp" alt="shot_range" width="100%" />
             </div>
 
             <div className="info-written">
@@ -43,7 +43,7 @@ function About() {
                     </div>
 
                     <div>
-                        <img src="/logo/grigom_black.svg" alt="grigom_black" width="200px" />
+                        <img src="logo/grigom_black.svg" alt="grigom_black" width="200px" />
                     </div>
                 </div>
             </div>

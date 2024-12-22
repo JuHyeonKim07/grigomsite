@@ -81,7 +81,7 @@ export default function VerticalTabs() {
                             }
                         }}
                     >
-                        {cartegory && cartegory.map((value, index) => (
+                        {cartegory && cartegory.map((value: any, index: number) => (
                             <Tab label={value.snippet.title} key={index}
                                 sx={{
                                     color: 'black', // 기본 폰트 색상
@@ -98,7 +98,7 @@ export default function VerticalTabs() {
                 </div>
 
                 {/* 영상 리스트 */}
-                {cartegory && cartegory.map((item, index) => (
+                {cartegory && cartegory.map((item: any, index: number) => (
                     <TabPanel value={value} index={index} key={item.id}>
                         <YoutubeVideoList playlistId={item.id} />
                     </TabPanel>
