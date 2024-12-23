@@ -4,7 +4,6 @@
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { youTubeAcsses } from '../apis/keys';
 import { youtubeResponse } from "../getTypes";
 
 interface PostState {
@@ -27,7 +26,7 @@ export const getYoutubeListVideosAction = createAsyncThunk(
     async (playlistId: string, thunkAPI) => {
         try {
             const { data } = await axios.get<youtubeResponse>(
-                `${BASE_URL}/playlistItems?key=${youTubeAcsses.apiKey}&playlistId=${playlistId}&part=snippet&maxResults=30`
+                `${BASE_URL}/playlistItems?key=${process.env.REACT_APP_YOUTUBE_API_KEY}&playlistId=${playlistId}&part=snippet&maxResults=30`
             )
             return data
         } catch (err: any) {

@@ -6,7 +6,7 @@
 .pnp.js
 /.history
 
-/src/apis
+.env
 
 # testing
 /coverage
