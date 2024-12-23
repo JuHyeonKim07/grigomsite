@@ -3,6 +3,7 @@
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { youTubeAcsses } from '../apis/keys';
 import { youtubeResponse, cartegory } from "../getTypes";
 
 interface PostState {
@@ -17,23 +18,32 @@ const initialState = {
     cartegory: []
 } as PostState;
 
-const BASE_URL = 'https://www.googleapis.com/youtube/v3'
+const BASE_URL = "https://grigompictureshidefunctions.netlify.app";
 
 // ACTION
 export const youtubeListPlaylistAction = createAsyncThunk(
-    "GET/YOUTUBE_CHANNELID",
-    async (channelId: string, thunkAPI) => {
-        try {
-            const { data } = await axios.get<youtubeResponse>(
-                `${BASE_URL}/playlists?key=${process.env.REACT_APP_YOUTUBE_API_KEY}&channelId=${channelId}&part=snippet&maxResults=30`
-            )
-            return data
-        } catch (err: any) {
-            return thunkAPI.rejectWithValue({
-                errorMessage: '호출에 실패했습니다.'
-            })
-        }
+  "GET/YOUTUBE_CHANNELID",
+  async (channelId: string, thunkAPI) => {
+    try {
+      // URL 생성
+      const url = new URL("youtube/v3/playlists", BASE_URL);
+      const parameters = new URLSearchParams({
+        part: "snippet",
+        channelId: channelId,
+        maxResults: "30",
+        // API 키는 백엔드에서 처리됨
+      });
+      url.search = parameters.toString();
+
+      // API 호출
+      const { data } = await axios.get<youtubeResponse>(url.toString());
+      return data;
+    } catch (err: any) {
+      return thunkAPI.rejectWithValue({
+        errorMessage: "호출에 실패했습니다.",
+      });
     }
+  }
 );
 
 // SLICE

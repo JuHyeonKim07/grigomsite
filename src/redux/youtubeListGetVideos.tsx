@@ -18,23 +18,32 @@ const initialState = {
     data: null,
 } as PostState;
 
-const BASE_URL = 'https://www.googleapis.com/youtube/v3'
+const BASE_URL = "https://grigompictureshidefunctions.netlify.app";
 
 // ACTION
 export const getYoutubeListVideosAction = createAsyncThunk(
-    "GET/YOUTUBE_PRODUCT",
-    async (playlistId: string, thunkAPI) => {
-        try {
-            const { data } = await axios.get<youtubeResponse>(
-                `${BASE_URL}/playlistItems?key=${process.env.REACT_APP_YOUTUBE_API_KEY}&playlistId=${playlistId}&part=snippet&maxResults=30`
-            )
-            return data
-        } catch (err: any) {
-            return thunkAPI.rejectWithValue({
-                errorMessage: '호출에 실패했습니다.'
-            })
-        }
+  "GET/YOUTUBE_PRODUCT",
+  async (playlistId: string, thunkAPI) => {
+    try {
+      // URL 생성
+      const url = new URL("youtube/v3/playlistItems", BASE_URL);
+      const parameters = new URLSearchParams({
+        part: "snippet",
+        playlistId: playlistId,
+        maxResults: "30",
+        // API 키는 포함하지 않음
+      });
+      url.search = parameters.toString();
+
+      // API 호출
+      const { data } = await axios.get<youtubeResponse>(url.toString());
+      return data;
+    } catch (err: any) {
+      return thunkAPI.rejectWithValue({
+        errorMessage: "호출에 실패했습니다.",
+      });
     }
+  }
 );
 
 // SLICE
